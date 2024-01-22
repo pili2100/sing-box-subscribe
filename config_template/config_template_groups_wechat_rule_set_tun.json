@@ -55,22 +55,6 @@
         "mode": "or",
         "rules": [
           {
-            "query_type": [
-              "A",
-              "AAAA",
-              "CNAME"
-            ],
-            "invert": true
-          }
-        ],
-        "server": "nblock",
-        "disable_cache": true
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
             "rule_set": "BlockHttpDNS"
           },
           {
