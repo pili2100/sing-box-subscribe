@@ -59,8 +59,9 @@
         "rules": [
           {
             "protocol": "dns",
+            "network": "udp",
             "source_port": [
-              784,53,8853,443
+              784,53,8853,443,853
             ]
           },
           {
