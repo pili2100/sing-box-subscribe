@@ -21,41 +21,155 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "tls://8.8.8.8",
+        "address": "https://cloudflare-dns.com/dns-query",
+        "address_resolver": "localDns",
+        "strategy": "ipv4_only",
         "detour": "proxy"
       },
       {
         "tag": "localDns",
-        "address": "https://223.5.5.5/dns-query",
+        "address": "https://1.12.12.12/dns-query",
+        "strategy": "ipv4_only",
         "detour": "direct"
       },
       {
-        "tag": "block",
+        "tag": "nblock",
         "address": "rcode://success"
+      },
+      {
+        "tag": "dns_refused",
+        "address": "rcode://refused"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip",
+        "strategy": "ipv4_only"
       }
     ],
     "rules": [
       {
-        "domain": [
-          "ghproxy.com",
-          "cdn.jsdelivr.net",
-          "testingcf.jsdelivr.net"
-        ],
-        "server": "localDns"
-      },
-      {
-        "rule_set": "geosite-category-ads-all",
-        "server": "block"
-      },
-      {
         "outbound": "any",
         "server": "localDns",
+        "disable_cache": false,
+        "rewrite_ttl": 5
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "protocol": "dns",
+            "source_port": [
+              784,53,8853,443
+            ]
+          },
+          {
+            "outbound": "dns-out",
+            "invert": true
+          }
+        ],
+        "server": "dns_refused",
+        "disable_cache": false
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "query_type": [
+              "A",
+              "AAAA",
+              "CNAME"
+            ],
+            "invert": true
+          }
+        ],
+        "server": "dns_refused",
         "disable_cache": true
       },
       {
-        "rule_set": "geosite-cn",
-        "server": "localDns"
-      },   
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "BlockHttpDNS"
+          },
+          {
+            "rule_set": "geosite-category-ads-all"
+          },
+          {
+            "domain_suffix": [
+              ".mcdn.bilivideo.cn",
+              ".szbdyd.com"
+            ],
+            "domain_regex": [
+              "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+              "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+            ]
+          }
+        ],
+        "server": "dns_refused",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "query_type": [
+          "CNAME"
+        ],
+        "server": "proxyDns",
+        "disable_cache": false,
+        "rewrite_ttl": 20
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-cn",
+            "invert": true
+          },
+          {
+            "query_type": [
+              "CNAME"
+            ]
+          }
+        ],
+        "server": "proxyDns",
+        "disable_cache": false,
+        "rewrite_ttl": 20
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
+          }
+        ],
+        "server": "dns_fakeip",
+        "disable_cache": false,
+        "rewrite_ttl": 20
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": [
+              "geosite-cn"
+            ]
+          },
+          {
+            "domain_keyword": "ntp"
+          }
+        ],
+        "server": "localDns",
+        "disable_cache": true
+      },
       {
         "clash_mode": "direct",
         "server": "localDns"
@@ -63,13 +177,15 @@
       {
         "clash_mode": "global",
         "server": "proxyDns"
-      },
-      {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "proxyDns"
       }
     ],
-    "strategy": "ipv4_only"
+    "independent_cache": true,
+    "final": "proxyDns",
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
   },
   "inbounds": [
     {
@@ -381,7 +497,7 @@
         "proxy"
       ],
       "filter":[
-        {"action":"exclude","keywords":["🇭🇰|HK|hk|香港|香|🇹🇼|TW|tw|台湾|台|🇸🇬|SG|sg|新加坡|狮|🇯🇵|JP|jp|日本|日|🇺🇸|US|us|美国|美|网站|剩余|流量|过期|时间|期|地址"]}
+        {"action":"exclude","keywords":["🇭🇰|HK|hk|香港|香|🇹🇼|TW|tw|台湾|台|🇸🇬|SG|sg|新加坡|狮|🇯🇵|JP|jp|日本|日|🇺🇸|US|us|美国|美"]}
       ]
     },
     {
@@ -390,8 +506,11 @@
       "outbounds":[
         "{all}"
       ],
+      "filter":[
+        {"action":"exclude","keywords":["网站|地址|剩余|流量|过期|时间|有效"]}
+      ],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "1m",
+      "interval": "10m",
       "tolerance": 50
     },
     {
@@ -412,12 +531,46 @@
     "final": "proxy",
     "rules": [
       {
+        "ip_version": 4,
         "protocol": "dns",
         "outbound": "dns-out"
       },
       {
+        "outbound": "proxy",
+        "domain": [
+          "ghproxy.com",
+          "cdn.jsdelivr.net",
+          "testingcf.jsdelivr.net"
+        ]
+      },
+      {
         "network": "udp",
-        "port": 443,
+        "source_port": [
+          53,80,443
+        ],
+        "outbound": "block"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "BlockHttpDNS"
+          },
+          {
+            "rule_set": "geosite-category-ads-all"
+          },
+          {
+            "domain_suffix": [
+              ".mcdn.bilivideo.cn",
+              ".szbdyd.com"
+            ],
+            "domain_regex": [
+              "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+              "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+            ]
+          }
+        ],
         "outbound": "block"
       },
       {
@@ -563,6 +716,34 @@
       }
     ],
     "rule_set": [
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "BlockHttpDNS",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/bm7/BlockHttpDNS.srs",
+        "download_detour": "direct"
+      },
       {
         "tag": "geoip-google",
         "type": "remote",
@@ -764,27 +945,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/primevideo.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-geolocation-!cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geosite-category-ads-all",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
         "download_detour": "direct"
       }
     ]
