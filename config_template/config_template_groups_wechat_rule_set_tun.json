@@ -63,7 +63,7 @@
             "invert": true
           }
         ],
-        "server": "dns_refused",
+        "server": "nblock",
         "disable_cache": true
       },
       {
