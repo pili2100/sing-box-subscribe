@@ -58,9 +58,10 @@
         "mode": "and",
         "rules": [
           {
-            "protocol": "dns",
+            "protocol": ["dns","tls"],
+            "network": "udp",
             "source_port": [
-              784,53,8853,443
+              784,53,8853,443,853
             ]
           },
           {
