@@ -671,7 +671,7 @@
       },
       {
         "inbound": [
-        "tun","mixed-in"
+        "tun"
         ],
         "outbound": "loop"
       }
