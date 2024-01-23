@@ -672,7 +672,7 @@
       },
       {
         "inbound": [
-        "mixed-in"
+        "loop-in"
         ],
         "outbound": "loop"
       }
