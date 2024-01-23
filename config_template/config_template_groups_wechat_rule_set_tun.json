@@ -147,7 +147,7 @@
       "stack": "system",
       "platform": {
         "http_proxy": {
-          "enabled": true,
+          "enabled": false,
           "server": "127.0.0.1",
           "server_port": 2080
         }
@@ -163,7 +163,7 @@
     },
     {
       "tag": "loop-in",
-      "type": "socks",
+      "type": "http",
       "listen": "127.0.0.1",
       "listen_port": 7891,
       "tcp_fast_open": true,
