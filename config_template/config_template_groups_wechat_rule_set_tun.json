@@ -672,7 +672,7 @@
       },
       {
         "inbound": [
-         "loop-in"
+        "tun","loop-in"
         ],
         "outbound": "loop"
       }
