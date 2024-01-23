@@ -106,10 +106,11 @@
         "mode": "and",
         "rules": [
           {
-        "inbound": "tun",
-        "query_type": [
-          "A",
-          "AAAA"]
+            "inbound": "tun",
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
           }
         ],
         "server": "dns_fakeip",
@@ -134,10 +135,10 @@
   },
   "inbounds": [
     {
-	  "tag": "tun",
+      "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.1/30",
-	  "inet6_address": "fdfe:dcba:9876::1/126",
+      "inet6_address": "fdfe:dcba:9876::1/126",
       "mtu": 9000,
       "auto_route": true,
       "strict_route": true,
@@ -153,7 +154,7 @@
       }
     },
     {
-	  "tag": "mixed",
+      "tag": "mixed-in",
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 2080,
@@ -162,11 +163,13 @@
     },
     {
       "tag": "loop-in",
-      "type": "mixed",
+      "type": "http",
       "listen": "127.0.0.1",
       "listen_port": 7891,
-      "sniff": true,
-      "domain_strategy": "prefer_ipv4"
+      "tcp_fast_open": true,
+      "detour": "mixed-in",
+      "domain_strategy": "prefer_ipv4",
+      "sniff": true
     }
   ],
   "outbounds": [
@@ -485,8 +488,10 @@
       "tag": "loop",
       "type": "socks",
       "server": "127.0.0.1",
-      "server_port": 7891
-    }
+      "server_port": 7891,
+      "udp_over_tcp": {"enabled": true},
+      "tcp_fast_open": true 
+    },
   ],
   "route": {
     "auto_detect_interface": true,
@@ -667,8 +672,7 @@
       },
       {
         "inbound": [
-          "tun",
-          "mixed"
+          "tun"
         ],
         "outbound": "loop"
       }
