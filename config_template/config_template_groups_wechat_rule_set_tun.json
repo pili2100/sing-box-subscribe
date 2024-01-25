@@ -171,12 +171,12 @@
       "sniff": true
     },
     {
-      "type": "direct",
       "tag": "direct-in",
-      "network": "tcp",
+      "type": "direct",
       "listen": "127.0.0.1",
       "listen_port": 7777,
       "sniff": true,
+      "network": "tcp",
       "tcp_fast_open": true,
       "override_address": "127.0.0.1",
       "override_port": 2080
