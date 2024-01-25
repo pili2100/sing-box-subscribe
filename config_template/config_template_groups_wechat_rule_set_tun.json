@@ -159,22 +159,16 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "users": []
-    },
-    {
-      "tag": "loop-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7891,
       "tcp_fast_open": true,
-      "domain_strategy": "prefer_ipv4",
-      "sniff": true
+      "domain_strategy": "prefer_ipv4",      
+      "users": []
     },
     {
       "tag": "direct-in",
       "type": "direct",
       "listen": "127.0.0.1",
       "listen_port": 7777,
+      "detour": "mixed-in",
       "sniff": true,
       "network": "tcp",
       "tcp_fast_open": true,
@@ -498,7 +492,7 @@
       "tag": "loop",
       "type": "socks",
       "server": "127.0.0.1",
-      "server_port": 7891,
+      "server_port": 7777,
       "tcp_fast_open": true
     }
   ],
