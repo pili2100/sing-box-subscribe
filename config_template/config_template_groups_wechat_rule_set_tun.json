@@ -159,8 +159,6 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "set_system_proxy": true,
-      "sniff_override_destination": false,
       "users": []
     },
     {
