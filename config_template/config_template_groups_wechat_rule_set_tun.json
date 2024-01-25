@@ -500,6 +500,7 @@
       "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7777,
+      "udp_over_tcp": true,
       "tcp_fast_open": true
     }
   ],
