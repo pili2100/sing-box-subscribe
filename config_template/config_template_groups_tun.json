@@ -23,13 +23,11 @@
         "tag": "proxyDns",
         "address": "https://cloudflare-dns.com/dns-query",
         "address_resolver": "localDns",
-        "strategy": "ipv4_only",
         "detour": "proxy"
       },
       {
         "tag": "localDns",
         "address": "https://1.12.12.12/dns-query",
-        "strategy": "ipv4_only",
         "detour": "direct"
       },
       {
@@ -50,44 +48,6 @@
       {
         "outbound": "any",
         "server": "localDns",
-        "disable_cache": false,
-        "rewrite_ttl": 5
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "protocol": "dns",
-            "network": "tcp",
-            "source_port": [
-              784,
-              53,
-              8853
-            ]
-          },
-          {
-            "outbound": "dns-out",
-            "invert": true
-          }
-        ],
-        "server": "dns_refused",
-        "disable_cache": false
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "query_type": [
-              "A",
-              "AAAA",
-              "CNAME"
-            ],
-            "invert": true
-          }
-        ],
-        "server": "dns_refused",
         "disable_cache": true
       },
       {
@@ -99,7 +59,7 @@
           },
           {
             "rule_set": "geosite-category-ads-all"
-          },          
+          },
           {
             "domain_suffix": [
               ".mcdn.bilivideo.cn",
@@ -146,7 +106,7 @@
         "mode": "and",
         "rules": [
           {
-            "rule_set": "geosite-geolocation-!cn",
+            "inbound": "tun",
             "query_type": [
               "A",
               "AAAA"
@@ -154,24 +114,7 @@
           }
         ],
         "server": "dns_fakeip",
-        "disable_cache": false,
-        "rewrite_ttl": 20
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "rule_set": [
-              "geosite-cn"
-            ]
-          },
-          {
-            "domain_keyword": "ntp"
-          }
-        ],
-        "server": "localDns",
-        "disable_cache": true
+        "rewrite_ttl": 1
       },
       {
         "clash_mode": "direct",
@@ -179,11 +122,11 @@
       },
       {
         "clash_mode": "global",
-        "server": "proxyDns"
+        "server": "dns_fakeip"
       }
     ],
     "independent_cache": true,
-    "final": "proxyDns",
+    "final": "localDns",
     "fakeip": {
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
@@ -192,8 +135,10 @@
   },
   "inbounds": [
     {
+      "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
       "mtu": 9000,
       "auto_route": true,
       "strict_route": true,
@@ -209,11 +154,32 @@
       }
     },
     {
+      "tag": "mixed-in",
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
       "users": []
+    },
+    {
+      "tag": "loop-in",
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7891,
+      "domain_strategy": "prefer_ipv4",
+      "tcp_fast_open": true,
+      "sniff": true
+    },
+    {
+      "tag": "direct-in",
+      "type": "direct",
+      "listen": "127.0.0.1",
+      "listen_port": 7777,
+      "detour": "loop-in",
+      "sniff": true,
+      "network": "tcp",
+      "override_address": "127.0.0.1",
+      "override_port": 7891
     }
   ],
   "outbounds": [
@@ -527,6 +493,13 @@
     {
       "type": "block",
       "tag": "block"
+    },
+    {
+      "tag": "loop",
+      "type": "socks",
+      "server": "127.0.0.1",
+      "server_port": 7777,
+      "udp_over_tcp": true
     }
   ],
   "route": {
@@ -534,8 +507,7 @@
     "final": "proxy",
     "rules": [
       {
-        "ip_version": 4,
-        "protocol": "dns",
+        "port": 53,
         "outbound": "dns-out"
       },
       {
@@ -547,24 +519,12 @@
         ]
       },
       {
-        "network": "udp",
-        "port": [
-          53,
-          80,
-          443
-        ],
-        "outbound": "block"
-      },
-      {
         "type": "logical",
         "mode": "or",
         "rules": [
           {
             "rule_set": "BlockHttpDNS"
           },
-          {
-            "rule_set": "geosite-category-ads-all"
-          },   
           {
             "domain_suffix": [
               ".mcdn.bilivideo.cn",
@@ -718,6 +678,18 @@
       {
         "rule_set": "geosite-cn",
         "outbound": "China"
+      },
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      },  
+      {
+        "inbound": [
+          "loop-in"
+        ],
+        "outbound": "proxy"
       }
     ],
     "rule_set": [
