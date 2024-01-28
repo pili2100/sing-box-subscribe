@@ -499,7 +499,9 @@
       "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7777,
-      "udp_over_tcp": true
+      "udp_over_tcp": true,
+      "tcp_multi_path": true
+      
     }
   ],
   "route": {
