@@ -690,7 +690,7 @@
         "inbound": [
           "loop-in"
         ],
-        "outbound": "Global"
+        "outbound": "proxy"
       }
     ],
     "rule_set": [
