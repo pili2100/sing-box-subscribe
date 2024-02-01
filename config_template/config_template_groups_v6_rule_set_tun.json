@@ -177,7 +177,7 @@
       "listen_port": 7777,
       "detour": "loop-in",
       "network": "tcp",
-      "override_address": "127.0.0.1",
+      "override_address": "::",
       "override_port": 7891
     }
   ],
