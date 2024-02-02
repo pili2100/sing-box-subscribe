@@ -513,18 +513,6 @@
         "outbound": "dns-out"
       },
       {
-        "inbound": [
-          "mixed-in"
-        ],
-        "outbound": "loop"
-      },  
-      {
-        "inbound": [
-          "loop-in"
-        ],
-        "outbound": "proxy"
-      },
-      {
         "outbound": "proxy",
         "domain": [
           "ghproxy.com",
@@ -692,6 +680,18 @@
       {
         "rule_set": "geosite-cn",
         "outbound": "China"
+      },
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      },  
+      {
+        "inbound": [
+          "loop-in"
+        ],
+        "outbound": "proxy"
       }
     ],
     "rule_set": [
