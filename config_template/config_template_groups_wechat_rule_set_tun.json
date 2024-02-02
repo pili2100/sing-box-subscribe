@@ -167,7 +167,6 @@
       "listen": "0.0.0.0",
       "listen_port": 7891,
       "tcp_fast_open": true,
-      "domain_strategy": "prefer_ipv4",
       "sniff": true
     },
     {
@@ -177,6 +176,7 @@
       "listen_port": 7777,
       "detour": "loop-in",
       "network": "tcp",
+      "domain_strategy": "prefer_ipv4",      
       "override_address": "127.0.0.1",
       "override_port": 7891
     }
