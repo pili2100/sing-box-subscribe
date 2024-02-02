@@ -159,6 +159,7 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
+      "sniff_override_destination": false,      
       "users": []
     },
     {
@@ -169,7 +170,7 @@
       "tcp_fast_open": true,
       "domain_strategy": "prefer_ipv4",
       "sniff": true,
-      "sniff_override_destination": true      
+      "sniff_override_destination": true
     },
     {
       "tag": "direct-in",
@@ -687,10 +688,10 @@
           "mixed-in"
         ],
         "outbound": "loop"
-      },
+      },  
       {
         "inbound": [
-          "direct-in"
+          "loop-in"
         ],
         "outbound": "proxy"
       }
