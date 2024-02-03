@@ -159,7 +159,6 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "sniff_override_destination": false,      
       "users": []
     },
     {
@@ -169,8 +168,7 @@
       "listen_port": 7891,
       "tcp_fast_open": true,
       "domain_strategy": "prefer_ipv4",
-      "sniff": true,
-      "sniff_override_destination": true
+      "sniff": true
     },
     {
       "tag": "direct-in",
@@ -504,6 +502,15 @@
       "udp_over_tcp": true,
       "domain_strategy": "prefer_ipv4",
       "tcp_multi_path": true
+    },
+    {
+      "tag": "loop-out",
+      "type": "socks",
+      "detour": "proxy",
+      "network": "tcp",
+      "udp_over_tcp": true,
+      "domain_strategy": "prefer_ipv4",
+      "tcp_multi_path": true
     }
   ],
   "route": {
@@ -691,9 +698,9 @@
       },  
       {
         "inbound": [
-          "loop-in"
+          "direct-in"
         ],
-        "outbound": "proxy"
+        "outbound": "loop-out"
       }
     ],
     "rule_set": [
