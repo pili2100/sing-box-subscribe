@@ -21,13 +21,12 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "https://cloudflare-dns.com/dns-query",
-        "address_resolver": "localDns",
+        "address": "h3://1.1.1.1/dns-query#h3=true",
         "detour": "proxy"
       },
       {
         "tag": "localDns",
-        "address": "https://1.12.12.12/dns-query",
+        "address": "h3://1.12.12.12/dns-query#h3=true",
         "detour": "direct"
       },
       {
@@ -163,7 +162,7 @@
     },
     {
       "tag": "loop-in",
-      "type": "socks",
+      "type": "mixed",
       "listen": "0.0.0.0",
       "listen_port": 7891,
       "tcp_fast_open": true,
@@ -495,12 +494,10 @@
     },
     {
       "tag": "loop",
-      "type": "socks",
+      "type": "http",
       "server": "127.0.0.1",
       "server_port": 7777,
-      "network": "tcp",
-      "udp_over_tcp": true,
-      "domain_strategy": "prefer_ipv4",
+      "reuse_addr": true,
       "tcp_multi_path": true
     },
     {
@@ -695,7 +692,7 @@
           "mixed-in"
         ],
         "outbound": "loop"
-      },  
+      },
       {
         "inbound": [
           "direct-in"
