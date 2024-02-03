@@ -21,12 +21,13 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "h3://1.1.1.1/dns-query#h3=true",
+        "address": "h3://cloudflare-dns.com/dns-query#h3=true",
+        "address_resolver": "localDns",
         "detour": "proxy"
       },
       {
         "tag": "localDns",
-        "address": "h3://223.6.6.6/dns-query#h3=true",
+        "address": "https://1.12.12.12/dns-query",
         "detour": "direct"
       },
       {
