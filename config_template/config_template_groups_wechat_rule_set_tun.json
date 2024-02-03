@@ -26,7 +26,7 @@
       },
       {
         "tag": "localDns",
-        "address": "h3://1.12.12.12/dns-query#h3=true",
+        "address": "h3://223.6.6.6/dns-query#h3=true",
         "detour": "direct"
       },
       {
