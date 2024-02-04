@@ -21,7 +21,7 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "h3://1.1.1.1/dns-query#h3=true",
+        "address": "h3://cloudflare-dns.com/dns-query#h3=true",
         "address_resolver": "localDns",
         "detour": "proxy"
       },
