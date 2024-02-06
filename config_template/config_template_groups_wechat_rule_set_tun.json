@@ -495,19 +495,20 @@
     },
     {
       "tag": "loop",
-      "type": "http",
+      "type": "socks",
+      "network": "tcp",
       "server": "127.0.0.1",
-      "server_port": 7777,
-      "reuse_addr": true,
+      "server_port": 7777,	  
+      "udp_over_tcp": true,
+      "reuse_addr": true,	  
+      "domain_strategy": "prefer_ipv4",
       "tcp_multi_path": true
     },
     {
       "tag": "loop-out",
-      "type": "socks",
+      "type": "direct",
       "detour": "proxy",
-      "network": "tcp",
-      "udp_over_tcp": true,
-      "domain_strategy": "prefer_ipv4",
+      "reuse_addr": true,
       "tcp_multi_path": true
     }
   ],
@@ -696,7 +697,7 @@
       },
       {
         "inbound": [
-          "direct-in"
+          "loop-in"
         ],
         "outbound": "loop-out"
       }
