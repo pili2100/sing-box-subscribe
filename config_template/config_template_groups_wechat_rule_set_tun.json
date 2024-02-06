@@ -178,7 +178,7 @@
       "detour": "loop-in",
       "network": "tcp",
       "override_address": "127.0.0.1",
-      "override_port": 7777
+      "override_port": 7891
     }
   ],
   "outbounds": [
@@ -500,6 +500,15 @@
       "server_port": 7777,
       "reuse_addr": true,
       "tcp_multi_path": true
+    },
+    {
+      "tag": "loop-out",
+      "type": "socks",
+      "detour": "proxy",
+      "network": "tcp",
+      "udp_over_tcp": true,
+      "domain_strategy": "prefer_ipv4",
+      "tcp_multi_path": true
     }
   ],
   "route": {
@@ -689,14 +698,8 @@
         "inbound": [
           "direct-in"
         ],
-        "outbound": "block"
-      },
-      {
-        "inbound": [
-          "loop-in"
-        ],
-        "outbound": "proxy"
-      }	 
+        "outbound": "loop-out"
+      }
     ],
     "rule_set": [
       {
