@@ -46,13 +46,13 @@
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "localDns",
+        "inbound": "loop-in",
+        "server": "proxyDns",
         "disable_cache": true
       },
       {
-        "inbound": "loop-in",
-        "server": "proxyDns",
+        "outbound": "any",
+        "server": "localDns",
         "disable_cache": true
       },
       {
