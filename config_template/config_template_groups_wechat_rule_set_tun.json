@@ -691,12 +691,6 @@
           "mixed-in"
         ],
         "outbound": "loop"
-      },
-      {
-        "inbound": [
-          "loop-in"
-        ],
-        "outbound": "proxy"
       }
     ],
     "rule_set": [
