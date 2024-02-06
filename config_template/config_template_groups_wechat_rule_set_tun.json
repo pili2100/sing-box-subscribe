@@ -21,7 +21,7 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "quic://dns.cloudflare.com/dns-query",
+        "address": "h3://dns.cloudflare.com/dns-query",
         "address_resolver": "localDns",
         "detour": "proxy"
       },
@@ -45,6 +45,11 @@
       }
     ],
     "rules": [
+      {
+        "inbound": "loop-in",
+        "server": "proxyDns",
+        "disable_cache": true
+      },
       {
         "outbound": "any",
         "server": "localDns",
@@ -690,9 +695,9 @@
       },
       {
         "inbound": [
-          "mixed-in"
+          "loop-in"
         ],
-        "outbound": "loop"
+        "outbound": "proxy"
       },
       {
         "inbound": [
