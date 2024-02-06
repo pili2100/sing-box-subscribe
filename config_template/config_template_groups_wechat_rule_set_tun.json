@@ -500,16 +500,9 @@
     },
     {
       "tag": "loop",
-      "type": "http",
+      "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7777,
-      "reuse_addr": true,
-      "tcp_multi_path": true
-    },
-    {
-      "tag": "loop-out",
-      "type": "socks",
-      "detour": "proxy",
       "network": "tcp",
       "udp_over_tcp": true,
       "domain_strategy": "prefer_ipv4",
@@ -695,15 +688,15 @@
       },
       {
         "inbound": [
-          "loop-in"
+          "mixed-in"
         ],
-        "outbound": "proxy"
+        "outbound": "loop"
       },
       {
         "inbound": [
-          "direct-in"
+          "loop-in"
         ],
-        "outbound": "loop-out"
+        "outbound": "proxy"
       }
     ],
     "rule_set": [
