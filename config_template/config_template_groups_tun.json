@@ -522,7 +522,7 @@
       "udp_over_tcp": true,
       "domain_strategy": "prefer_ipv4",
       "tcp_multi_path": true
-    },
+    }
   ],
   "route": {
     "auto_detect_interface": true,
