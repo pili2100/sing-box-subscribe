@@ -709,7 +709,7 @@
       },
       {
         "inbound": [
-          "loop-in"
+          "direct-in"
         ],
         "outbound": "direct-out"
       }
