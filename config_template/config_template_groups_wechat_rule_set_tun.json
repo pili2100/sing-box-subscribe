@@ -14,12 +14,12 @@
     },
   "cache_file": {
     "enabled": true,
-    "store_fakeip": false
+    "store_fakeip": true
     }
   },
   "dns": {
     "servers": [
-      {
+     {
         "tag": "proxyDns",
         "address": "https://cloudflare-dns.com/dns-query",
         "address_resolver": "localDns",
@@ -27,7 +27,13 @@
       },
       {
         "tag": "localDns",
-        "address": "https://1.12.12.12/dns-query",
+        "address": "https://223.6.6.6/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "iniDns",
+        "address": "https://1.1.1.1/dns-query",
         "detour": "direct"
       },
       {
@@ -46,8 +52,19 @@
     ],
     "rules": [
       {
-        "outbound": "any",
+        "inbound": "loop-in",
+        "server": "proxyDns",
+        "disable_cache": true
+      },
+      {
+        "outbound": "China",
+        "rule_set": ["geosite-cn"],
         "server": "localDns",
+        "disable_cache": true
+      },  
+      {
+        "outbound": "any",
+        "server": "iniDns",
         "disable_cache": true
       },
       {
@@ -159,27 +176,23 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
-      "domain_strategy": "prefer_ipv4",      
       "users": []
     },
     {
       "tag": "loop-in",
-      "type": "socks",
+      "type": "mixed",
       "listen": "0.0.0.0",
       "listen_port": 7891,
+      "domain_strategy": "prefer_ipv4",       
       "tcp_fast_open": true,
-      "domain_strategy": "prefer_ipv4",
       "sniff": true
     },
     {
       "tag": "direct-in",
       "type": "direct",
-      "listen": "127.0.0.1",
-      "listen_port": 7777,
-      "detour": "loop-in",
-      "network": "tcp",
       "override_address": "127.0.0.1",
-      "override_port": 7891
+      "override_port": 2080
+      "detour": "loop-in"
     }
   ],
   "outbounds": [
@@ -495,11 +508,18 @@
       "tag": "block"
     },
     {
+      "tag": "direct-out",
+      "type": "direct",
+      "domain_strategy": "prefer_ipv4",       
+      "detour": "proxy"
+    },
+    {
       "tag": "loop",
       "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7777,
       "network": "tcp",
+      "reuse_addr": true,
       "udp_over_tcp": true,
       "domain_strategy": "prefer_ipv4",
       "tcp_multi_path": true
@@ -684,15 +704,15 @@
       },
       {
         "inbound": [
-          "mixed-in"
+          "direct-in"
         ],
         "outbound": "loop"
-      },  
+      },
       {
         "inbound": [
           "loop-in"
         ],
-        "outbound": "proxy"
+        "outbound": "direct-out"
       }
     ],
     "rule_set": [
