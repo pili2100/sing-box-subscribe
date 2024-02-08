@@ -19,7 +19,7 @@
   },
   "dns": {
     "servers": [
-      {
+     {
         "tag": "proxyDns",
         "address": "https://cloudflare-dns.com/dns-query",
         "address_resolver": "localDns",
