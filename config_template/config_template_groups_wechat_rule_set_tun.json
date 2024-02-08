@@ -31,6 +31,11 @@
         "detour": "direct"
       },
       {
+        "tag": "iniDns",
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "direct"
+      },      
+      {
         "tag": "nblock",
         "address": "rcode://success"
       },
@@ -51,8 +56,14 @@
         "disable_cache": true
       },
       {
-        "outbound": "any",
+        "outbound": "direct",
+        "rule_set": ["geosite-cn"],
         "server": "localDns",
+        "disable_cache": true
+      },
+      {
+        "outbound": "any",
+        "server": "iniDns",
         "disable_cache": true
       },
       {
@@ -183,7 +194,7 @@
       "detour": "loop-in",
       "network": "tcp",
       "override_address": "127.0.0.1",
-      "override_port": 7891
+      "override_port": 2080
     }
   ],
   "outbounds": [
