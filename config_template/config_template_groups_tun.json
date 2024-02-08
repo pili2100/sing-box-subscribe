@@ -57,13 +57,13 @@
         "disable_cache": true
       },
       {
-        "outbound": "direct",
+        "outbound": "China",
         "rule_set": ["geosite-cn"],
         "server": "localDns",
         "disable_cache": true
       },
       {
-        "outbound": "direct",
+        "outbound": "China",
         "rule_set": ["geoip-cn"],
         "server": "localDns",
         "disable_cache": true
