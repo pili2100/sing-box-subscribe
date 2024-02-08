@@ -175,7 +175,6 @@
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 2080,
-      "domain_strategy": "prefer_ipv4",      
       "sniff": true,
       "users": []
     },
@@ -511,6 +510,7 @@
     {
       "tag": "direct-out",
       "type": "direct",
+      "domain_strategy": "prefer_ipv4",       
       "detour": "proxy"
     },
     {
