@@ -191,7 +191,7 @@
       "tag": "direct-in",
       "type": "direct",
       "override_address": "127.0.0.1",
-      "override_port": 2080
+      "override_port": 2080,
       "detour": "loop-in"
     }
   ],
