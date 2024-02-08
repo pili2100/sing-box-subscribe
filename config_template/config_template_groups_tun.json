@@ -57,7 +57,7 @@
         "disable_cache": true
       },
       {
-        "outbound": "China",
+        "outbound": "direct",
         "rule_set": ["geosite-cn"],
         "server": "localDns",
         "disable_cache": true
