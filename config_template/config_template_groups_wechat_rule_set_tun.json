@@ -192,7 +192,8 @@
       "type": "direct",
       "override_address": "127.0.0.1",
       "override_port": 2080,
-      "detour": "loop-in"
+      "listen": "0.0.0.0",
+      "listen_port": 7777
     }
   ],
   "outbounds": [
@@ -704,13 +705,13 @@
       },
       {
         "inbound": [
-          "direct-in"
+          "mixed-in"
         ],
         "outbound": "loop"
       },
       {
         "inbound": [
-          "loop-in"
+          "direct-out"
         ],
         "outbound": "direct-out"
       }
