@@ -61,13 +61,7 @@
         "rule_set": ["geosite-cn"],
         "server": "localDns",
         "disable_cache": true
-      },
-      {
-        "outbound": "China",
-        "rule_set": ["geoip-cn"],
-        "server": "localDns",
-        "disable_cache": true
-      },      
+      },  
       {
         "outbound": "any",
         "server": "iniDns",
@@ -191,7 +185,6 @@
       "listen": "0.0.0.0",
       "listen_port": 7891,
       "tcp_fast_open": true,
-      "domain_strategy": "prefer_ipv4",
       "sniff": true
     },
     {
