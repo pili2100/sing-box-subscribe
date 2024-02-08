@@ -14,7 +14,7 @@
     },
   "cache_file": {
     "enabled": true,
-    "store_fakeip": true
+    "store_fakeip": false
     }
   },
   "dns": {
@@ -27,14 +27,9 @@
       },
       {
         "tag": "localDns",
-        "address": "https://223.6.6.6/dns-query",
+        "address": "https://1.12.12.12/dns-query",
         "detour": "direct"
       },
-      {
-        "tag": "iniDns",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "direct"
-      },      
       {
         "tag": "nblock",
         "address": "rcode://success"
@@ -51,19 +46,8 @@
     ],
     "rules": [
       {
-        "inbound": "loop-in",
-        "server": "proxyDns",
-        "disable_cache": true
-      },
-      {
-        "outbound": "direct",
-        "rule_set": ["geosite-cn"],
-        "server": "localDns",
-        "disable_cache": true
-      },
-      {
         "outbound": "any",
-        "server": "iniDns",
+        "server": "localDns",
         "disable_cache": true
       },
       {
@@ -175,11 +159,12 @@
       "listen": "127.0.0.1",
       "listen_port": 2080,
       "sniff": true,
+      "domain_strategy": "prefer_ipv4",      
       "users": []
     },
     {
       "tag": "loop-in",
-      "type": "mixed",
+      "type": "socks",
       "listen": "0.0.0.0",
       "listen_port": 7891,
       "tcp_fast_open": true,
@@ -702,7 +687,7 @@
           "mixed-in"
         ],
         "outbound": "loop"
-      },
+      },  
       {
         "inbound": [
           "loop-in"
