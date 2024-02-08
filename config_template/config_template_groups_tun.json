@@ -63,6 +63,12 @@
         "disable_cache": true
       },
       {
+        "outbound": "direct",
+        "rule_set": ["geoip-cn"],
+        "server": "localDns",
+        "disable_cache": true
+      },      
+      {
         "outbound": "any",
         "server": "iniDns",
         "disable_cache": true
