@@ -52,7 +52,7 @@
     ],
     "rules": [
       {
-        "inbound": "direct-in",
+        "inbound": "mixed-in",
         "server": "localDns",
         "disable_cache": true
       },      
