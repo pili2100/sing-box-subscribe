@@ -52,12 +52,17 @@
     ],
     "rules": [
       {
+        "inbound": "direct-in",
+        "server": "localDns",
+        "disable_cache": true
+      },      
+      {
         "inbound": "loop-in",
         "server": "proxyDns",
         "disable_cache": true
       },
       {
-        "outbound": "China",
+        "outbound": "direct",
         "rule_set": ["geosite-cn"],
         "server": "localDns",
         "disable_cache": true
