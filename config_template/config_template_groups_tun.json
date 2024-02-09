@@ -27,7 +27,7 @@
       },
       {
         "tag": "localDns",
-        "address": "h3://223.6.6.6/dns-query#h3=true",
+        "address": "https://223.6.6.6/dns-query",
         "strategy": "ipv4_only",
         "detour": "direct"
       },
