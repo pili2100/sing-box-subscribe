@@ -34,6 +34,7 @@
       {
         "tag": "iniDns",
         "address": "h3://1.0.0.1/dns-query#h3=true",
+        "strategy": "ipv4_only",        
         "detour": "direct"
       },
       {
