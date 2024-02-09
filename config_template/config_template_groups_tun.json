@@ -21,19 +21,19 @@
     "servers": [
      {
         "tag": "proxyDns",
-        "address": "https://cloudflare-dns.com/dns-query",
-        "address_resolver": "localDns",
+        "address": "h3://1.0.0.1/dns-query#h3=true",
+        "strategy": "ipv4_only",       
         "detour": "proxy"
       },
       {
         "tag": "localDns",
-        "address": "https://223.6.6.6/dns-query",
+        "address": "h3://223.6.6.6/dns-query#h3=true",
         "strategy": "ipv4_only",
         "detour": "direct"
       },
       {
         "tag": "iniDns",
-        "address": "h3://1.0.0.1/dns-query#h3=true",
+        "address": "https://1.0.0.1/dns-query",
         "strategy": "ipv4_only",        
         "detour": "direct"
       },
