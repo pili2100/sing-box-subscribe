@@ -24,7 +24,6 @@
         "address": "https://doh.libredns.gr/dns-query",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
-		"client_subnet": "1.0.1.0",
         "detour": "proxy"
       },
       {
@@ -34,7 +33,11 @@
       },
       {
         "tag": "nblock",
-        "address": "rcode://name_error"
+        "address": "rcode://success"
+      },
+      {
+        "tag": "dns_refused",
+        "address": "rcode://refused"
       },
       {
         "tag": "dns_fakeip",
@@ -51,6 +54,7 @@
       {
         "inbound": "loop-in",
         "server": "proxyDns",
+        "client_subnet": "1.0.1.0",	      
         "disable_cache": true
       },        
       {
@@ -129,7 +133,7 @@
     {
       "tag": "mixed-in",
       "type": "mixed",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 2080,
       "tcp_fast_open": true,
       "udp_fragment": true, 
@@ -147,7 +151,7 @@
     {
       "tag": "direct-in",
       "type": "direct",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 7777,
       "detour": "loop-in",
       "domain_strategy": "prefer_ipv4"
@@ -455,8 +459,7 @@
     },
     {
       "type": "direct",
-      "tag": "direct",
-	  "routing_mark": 100
+      "tag": "direct"
     },
     {
       "type": "dns",
@@ -480,19 +483,19 @@
     "auto_detect_interface": true,
     "final": "proxy",
     "rules": [
-			{
-				"type": "logical",
-				"mode": "or",
-				"rules": [
-					{
-						"port": 53
-					},
-					{
-						"protocol": "dns"
-					}
-				],
-				"outbound": "dns-out"
-			},
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules":[
+          {
+            "port":53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "outbound": "dns-out"
+      },
       {
         "outbound": "proxy",
         "domain": [
