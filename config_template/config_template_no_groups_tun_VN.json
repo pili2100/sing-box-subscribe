@@ -134,7 +134,7 @@
     {
       "tag": "mixed-in",
       "type": "mixed",
-      "listen": "127.0.0.1",
+      "listen": "::",
       "listen_port": 2080,
       "tcp_fast_open": true,
       "udp_fragment": true, 
@@ -143,7 +143,7 @@
     {
       "tag": "loop-in",
       "type": "socks",
-      "listen": "0.0.0.0",
+      "listen": "::",
       "listen_port": 7891,
       "udp_fragment": true, 
       "domain_strategy": "prefer_ipv4",
@@ -152,7 +152,7 @@
     {
       "tag": "direct-in",
       "type": "direct",
-      "listen": "127.0.0.1",
+      "listen": "::",
       "listen_port": 7777,
       "detour": "loop-in",
       "domain_strategy": "prefer_ipv4"
