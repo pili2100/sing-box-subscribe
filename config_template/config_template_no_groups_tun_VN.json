@@ -24,8 +24,7 @@
         "address": "https://doh.libredns.gr/dns-query",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
-        "detour": "proxy",
-        "client_subnet": "1.0.1.0"
+        "detour": "proxy"
       },
       {
         "tag": "localDns",
@@ -91,6 +90,7 @@
           }
         ],
         "server": "dns_fakeip",
+        "client_subnet": "1.0.1.0",
         "rewrite_ttl": 1
       },
       {
