@@ -485,9 +485,6 @@
 				"mode": "or",
 				"rules": [
 					{
-						"inbound": "dns-in"
-					},
-					{
 						"port": 53
 					},
 					{
