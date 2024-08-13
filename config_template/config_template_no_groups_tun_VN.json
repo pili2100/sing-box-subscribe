@@ -21,7 +21,7 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "https://doh.ffmuc.net/dns-query",
+        "address": "https://zero.dns0.eu/",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
         "client_subnet": "114.114.114.114/24",
@@ -553,7 +553,7 @@
     {
        "tag": "direct-out",
        "type": "direct",
-       "bind_interface": "以太网 3"
+       "bind_interface": "WLAN"
     }	
   ],
   "route": {
