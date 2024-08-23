@@ -592,14 +592,6 @@
 		"100.64.0.0/10"
 		],
 		"outbound": "direct-out"
-      }, 		
-      {
-        "outbound": "proxy",
-        "domain": [
-          "ghproxy.com",
-          "gcore.jsdelivr.net",
-          "testingcf.jsdelivr.net"
-        ]
       },
       {
         "type": "logical",
@@ -626,6 +618,35 @@
         ],
         "outbound": "block"
       },
+      {
+        "rule_set": "geosite-private",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "China"
+      },
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      },
+      {
+        "outbound": "proxy",
+        "domain": [
+          "ghproxy.com",
+          "gcore.jsdelivr.net",
+          "testingcf.jsdelivr.net"
+        ]
+      },	  
       {
         "clash_mode": "direct",
         "outbound": "direct"
@@ -733,27 +754,6 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Global"
-      },
-      {
-        "rule_set": "geosite-private",
-        "outbound": "direct"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "rule_set": [
-          "geoip-cn",
-          "geosite-cn"
-        ],
-        "outbound": "China"
-      },
-      {
-        "inbound": [
-          "mixed-in"
-        ],
-        "outbound": "loop"
       }
     ],
     "rule_set": [
