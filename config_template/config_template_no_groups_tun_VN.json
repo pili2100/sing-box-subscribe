@@ -567,8 +567,9 @@
           {
             "port": [
               53,
+              784,
               853,
-              854
+              5353
             ]
           },
           {
@@ -634,26 +635,12 @@
         "outbound": "China"
       },
       {
-        "inbound": [
-          "mixed-in"
-        ],
-        "outbound": "loop"
-      },
-      {
         "outbound": "proxy",
         "domain": [
           "ghproxy.com",
           "gcore.jsdelivr.net",
           "testingcf.jsdelivr.net"
         ]
-      },	  
-      {
-        "clash_mode": "direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "global",
-        "outbound": "proxy"
       },
       {
         "domain": [
@@ -662,6 +649,14 @@
           "yacd.haishan.me",
           "d.metacubex.one"
         ],
+        "outbound": "proxy"
+      },	  
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
         "outbound": "proxy"
       },
       {
@@ -754,7 +749,13 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Global"
-      }
+      },
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      }	  
     ],
     "rule_set": [
       {
