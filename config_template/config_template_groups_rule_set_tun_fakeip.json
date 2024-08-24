@@ -614,12 +614,6 @@
         "outbound": "China"
       },
       {
-        "inbound": [
-          "mixed-in"
-        ],
-        "outbound": "loop"
-      },
-      {
         "outbound": "proxy",
         "domain": [
           "ghproxy.com",
@@ -628,20 +622,20 @@
         ]
       },
       {
-        "clash_mode": "direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "global",
-        "outbound": "proxy"
-      },
-      {
         "domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one"
         ],
+        "outbound": "proxy"
+      },	  
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
         "outbound": "proxy"
       },
       {
@@ -734,7 +728,13 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Global"
-      }
+      },
+      {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      }	  
     ],
     "rule_set": [
       {
