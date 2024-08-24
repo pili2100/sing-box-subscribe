@@ -614,6 +614,12 @@
         "outbound": "China"
       },
       {
+        "inbound": [
+          "mixed-in"
+        ],
+        "outbound": "loop"
+      },
+      {
         "outbound": "proxy",
         "domain": [
           "ghproxy.com",
@@ -728,13 +734,7 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Global"
-      },
-      {
-        "inbound": [
-          "mixed-in"
-        ],
-        "outbound": "loop"
-      }	  
+      }
     ],
     "rule_set": [
       {
