@@ -21,7 +21,7 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "https://dns.jupitrdns.com/dns-query",
+        "address": "https://odvr.nic.cz/doh",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
         "client_subnet": "114.114.114.114/24",
