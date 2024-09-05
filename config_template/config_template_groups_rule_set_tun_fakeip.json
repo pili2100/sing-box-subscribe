@@ -21,10 +21,10 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "https://dns.jupitrdns.com/dns-query",
+        "address": "https://zero.dns0.eu/",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
-        "client_subnet": "1.0.1.1",
+        "client_subnet": "223.6.6.6",
         "detour": "proxy"
       },
       {
