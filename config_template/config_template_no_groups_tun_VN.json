@@ -21,7 +21,7 @@
     "servers": [
       {
         "tag": "proxyDns",
-        "address": "https://dnsforge.de/dns-query",
+        "address": "https://dns.cloudflare.com/dns-query",
         "strategy": "ipv4_only",
         "address_resolver": "localDns",
         "client_subnet": "223.6.6.6",
