@@ -583,6 +583,9 @@
 		"domain_keyword": [
 		"srdcloud"
 		],
+        	"process_name": [
+          	"Proxifier"
+        	],		      
 		"ip_cidr": [
 		"132.0.0.0/8",
 		"192.168.0.0/16",
