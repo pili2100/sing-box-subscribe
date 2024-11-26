@@ -75,7 +75,7 @@
                 "disable_cache": true
             },
             {
-                "domain_keyword": ["ctgpaas","srdcloud"],
+                "domain_keyword": ["ctgpaas","srdcloud","gdtel"],
 		"server": "local_area_Dns"
             },		
             {
