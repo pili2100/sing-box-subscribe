@@ -35,7 +35,7 @@
       },
       {
         "tag": "nblock",
-        "address": "rcode://name_error"
+        "address": "rcode://refused"
       },
       {
         "tag": "dns_fakeip",
@@ -49,10 +49,6 @@
         "mode": "or",
         "rules": [
           {
-            "outbound": [
-              "direct",
-              "proxy"
-            ],
             "rule_set": "geosite-category-ads-all"
           },
           {
@@ -101,6 +97,12 @@
           {
             "rule_set": "geosite-cn",
             "invert": true
+          },
+          {
+            "query_type": [
+              "A",
+              "CNAME"          
+            ]
           }
         ],
         "server": "proxyDns",
@@ -108,7 +110,7 @@
       },
       {
         "query_type": [
-          "A"       
+          "A"        
         ],
         "rule_set": [
           "geosite-cn",
