@@ -179,8 +179,7 @@
       "listen": "127.0.0.1",
       "listen_port": 7777,
       "detour": "loop-in",
-      "sniff": true,
-      "sniff_override_destination": true,
+      "sniff": false,
       "domain_strategy": "prefer_ipv4"
     }
   ],
@@ -537,6 +536,7 @@
       "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7777,
+      "domain_strategy": "prefer_ipv6",
       "udp_over_tcp": {
         "enabled": true,
         "version": 2
