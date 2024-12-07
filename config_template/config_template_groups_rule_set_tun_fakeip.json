@@ -101,6 +101,9 @@
           {
             "rule_set": "geosite-cn",
             "invert": true
+          },
+          {
+            "query_type": ["CNAME"]           
           }
         ],
         "server": "proxyDns",
@@ -108,8 +111,7 @@
       },
       {
         "query_type": [
-          "A",
-          "CNAME"          
+          "A"       
         ],
         "rule_set": [
           "geosite-cn",
