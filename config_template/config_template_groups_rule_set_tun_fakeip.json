@@ -100,8 +100,7 @@
           },
           {
             "query_type": [
-              "A",
-              "CNAME"          
+              "A"         
             ]
           }
         ],
@@ -110,7 +109,7 @@
       },
       {
         "query_type": [
-          "A"        
+          "CNAME"    
         ],
         "rule_set": [
           "geosite-cn",
