@@ -50,7 +50,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "proxyDns"
+				"server": "localDns"
 			},
 			{
 				"type": "logical",
@@ -567,7 +567,7 @@
 				"rules": [
 					{
 						"rule_set": [
-							"geosite-category-ads-all-ip"
+							"geosite-category-ads-all","geosite-category-ads-all-ip"
 						]
 					}
 				],
