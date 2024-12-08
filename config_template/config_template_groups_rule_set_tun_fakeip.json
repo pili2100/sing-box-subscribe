@@ -54,8 +54,16 @@
 			},
 			{
 				"type": "logical",
-				"mode": "or",
+				"mode": "and",
 				"rules": [
+					{
+						"rule_set": "geoip-cn",
+						"invert": true
+					},
+					{
+						"rule_set": "geosite-cn",
+						"invert": true
+					},
 					{
 						"rule_set": "geosite-category-ads-all"
 					}
@@ -562,6 +570,18 @@
 				"outbound": "dns-out"
 			},
 			{
+				"type": "logical",
+				"mode": "or",
+				"rules": [
+					{
+						"rule_set": [
+							"geosite-category-ads-all-ip"
+						]
+					}
+				],
+				"outbound": "block"
+			},	
+			{
 				"rule_set": [
 					"geosite-private",
 					"geosite-private-ip"
@@ -578,32 +598,12 @@
 					"geosite-cn"
 				],
 				"outbound": "China"
-			},
-			{
-				"type": "logical",
-				"mode": "or",
-				"rules": [
-					{
-						"rule_set": [
-							"geosite-category-ads-all","geosite-category-ads-all-ip"
-						]
-					}
-				],
-				"outbound": "block"
-			},			
+			},		
 			{
 				"inbound": [
 					"mixed-in"
 				],
 				"outbound": "loop"
-			},
-			{
-				"outbound": "proxy",
-				"domain": [
-					"ghproxy.com",
-					"gcore.jsdelivr.net",
-					"testingcf.jsdelivr.net"
-				]
 			},
 			{
 				"domain": [
