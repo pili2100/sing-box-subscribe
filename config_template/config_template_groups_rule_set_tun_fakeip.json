@@ -108,8 +108,7 @@
 					"CNAME"
 				],
 				"rule_set": [
-					"geosite-cn",
-					"geosite-geolocation-cn"
+					"geosite-cn"
 				],
 				"server": "localDns",
 				"disable_cache": true
