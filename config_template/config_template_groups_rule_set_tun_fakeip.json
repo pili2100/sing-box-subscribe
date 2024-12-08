@@ -567,7 +567,7 @@
 				"rules": [
 					{
 						"rule_set": [
-							"geosite-category-ads-all"
+							"geosite-category-ads-all-ip"
 						]
 					}
 				],
@@ -727,6 +727,14 @@
 			}
 		],
 		"rule_set": [
+			{
+				"tag": "geosite-category-ads-all-ip",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/AD-IP.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
 			{
 				"tag": "geosite-category-ads-all",
 				"type": "remote",
