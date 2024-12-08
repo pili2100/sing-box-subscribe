@@ -50,7 +50,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "localDns"
+				"server": "proxyDns"
 			},
 			{
 				"type": "logical",
@@ -562,18 +562,6 @@
 				"outbound": "dns-out"
 			},
 			{
-				"type": "logical",
-				"mode": "or",
-				"rules": [
-					{
-						"rule_set": [
-							"geosite-category-ads-all","geosite-category-ads-all-ip"
-						]
-					}
-				],
-				"outbound": "block"
-			},
-			{
 				"rule_set": [
 					"geosite-private",
 					"geosite-private-ip"
@@ -591,6 +579,18 @@
 				],
 				"outbound": "China"
 			},
+			{
+				"type": "logical",
+				"mode": "or",
+				"rules": [
+					{
+						"rule_set": [
+							"geosite-category-ads-all","geosite-category-ads-all-ip"
+						]
+					}
+				],
+				"outbound": "block"
+			},			
 			{
 				"inbound": [
 					"mixed-in"
@@ -739,7 +739,7 @@
 				"tag": "geosite-category-ads-all",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/AD-Site.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
