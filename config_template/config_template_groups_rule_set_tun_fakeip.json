@@ -577,6 +577,10 @@
 						"rule_set": [
 							"geosite-category-ads-all-ip"
 						]
+					},
+					{
+						"network": ["udp"],
+						"port": [443]
 					}
 				],
 				"outbound": "block"
