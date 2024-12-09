@@ -50,7 +50,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "localDns"
+				"server": "proxyDns"
 			},
 			{
 				"type": "logical",
@@ -577,6 +577,10 @@
 						"rule_set": [
 							"geosite-category-ads-all-ip"
 						]
+					},
+					{
+						"network": [udp"],
+						"port": [443]
 					}
 				],
 				"outbound": "block"
@@ -732,7 +736,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/AD-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -740,7 +744,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/AD-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -748,7 +752,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GeoIP-CN.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -756,7 +760,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GeoSite-CN.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -764,7 +768,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GFWList-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -772,7 +776,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Local-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -780,7 +784,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Local-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -788,7 +792,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Bilibili-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -796,7 +800,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Bilibili-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -804,7 +808,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Discord-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -812,7 +816,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Discord-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -820,7 +824,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GoogleFCM-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -828,7 +832,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GoogleFCM-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -836,7 +840,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Microsoft-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -844,7 +848,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Microsoft-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -852,7 +856,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Netflix-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -860,7 +864,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Netflix-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -868,7 +872,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/OpenAI-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -876,7 +880,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/OpenAI-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -884,7 +888,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -892,7 +896,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -900,7 +904,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Spotify-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -908,7 +912,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Spotify-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -916,7 +920,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Telegram-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -924,7 +928,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Telegram-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -932,7 +936,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Tiktok-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -940,7 +944,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Tiktok-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -948,7 +952,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -956,7 +960,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -964,7 +968,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Twitter-IP.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -972,7 +976,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Twitter-Site.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -980,7 +984,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -988,7 +992,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -996,7 +1000,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -1004,7 +1008,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs",
-				"download_detour": "proxy",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			}
 		]
