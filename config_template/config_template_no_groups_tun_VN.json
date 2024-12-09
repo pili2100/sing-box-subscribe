@@ -654,14 +654,6 @@
                 "outbound": "loop"
             },
             {
-                "outbound": "proxy",
-                "domain": [
-                    "ghproxy.com",
-                    "gcore.jsdelivr.net",
-                    "testingcf.jsdelivr.net"
-                ]
-            },
-            {
                 "domain": [
                     "clash.razord.top",
                     "yacd.metacubex.one",
