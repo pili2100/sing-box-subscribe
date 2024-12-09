@@ -89,7 +89,15 @@
 				"mode": "and",
 				"rules": [
 					{
+						"rule_set": "geosite-geolocation-!cn",
+						"invert": true
+					},
+					{
 						"rule_set": "geoip-cn",
+						"invert": true
+					},
+					{
+						"rule_set": "geosite-geolocation-cn",
 						"invert": true
 					},
 					{
@@ -106,7 +114,8 @@
 					"CNAME"
 				],
 				"rule_set": [
-					"geosite-cn"
+					"geosite-cn",
+					"geosite-geolocation-cn"
 				],
 				"server": "localDns",
 				"disable_cache": true
@@ -579,17 +588,18 @@
 						]
 					},
 					{
-						"network": ["udp"],
-						"port": [443]
-					}					
+						"network": [
+							"udp"
+						],
+						"port": [
+							443
+						]
+					}
 				],
 				"outbound": "block"
-			},	
+			},
 			{
-				"rule_set": [
-					"geosite-private",
-					"geosite-private-ip"
-				],
+				"rule_set": "geosite-private",
 				"outbound": "direct"
 			},
 			{
@@ -602,7 +612,7 @@
 					"geosite-cn"
 				],
 				"outbound": "China"
-			},		
+			},
 			{
 				"inbound": [
 					"mixed-in"
@@ -627,16 +637,15 @@
 				"outbound": "proxy"
 			},
 			{
-				"rule_set": [
-					"geosite-openai",
-					"geosite-openai-ip"
-				],
+				"rule_set": "geosite-openai",
 				"outbound": "OpenAI"
 			},
 			{
 				"rule_set": [
+					"geosite-youtube",
 					"geoip-google",
-					"geosite-google"
+					"geosite-google",
+					"geosite-github"
 				],
 				"outbound": "Google"
 			},
@@ -673,17 +682,11 @@
 				"outbound": "Bahamut"
 			},
 			{
-				"rule_set": [
-					"geosite-spotify",
-					"geosite-spotify-ip"
-				],
+				"rule_set": "geosite-spotify",
 				"outbound": "Spotify"
 			},
 			{
-				"rule_set": [
-					"geosite-tiktok",
-					"geosite-tiktok-ip"
-				],
+				"rule_set": "geosite-tiktok",
 				"outbound": "TikTok"
 			},
 			{
@@ -694,24 +697,19 @@
 				"outbound": "NETFLIX"
 			},
 			{
-				"rule_set": [
-					"geosite-disney",
-					"geosite-disney-ip"
-				],
+				"rule_set": "geosite-disney",
 				"outbound": "Disney+"
 			},
 			{
 				"rule_set": [
 					"geoip-apple",
-					"geosite-apple"
+					"geosite-apple",
+					"geosite-amazon"
 				],
 				"outbound": "Apple"
 			},
 			{
-				"rule_set": [
-					"geosite-microsoft",
-					"geosite-microsoft-ip"
-				],
+				"rule_set": "geosite-microsoft",
 				"outbound": "Microsoft"
 			},
 			{
@@ -726,11 +724,43 @@
 				"outbound": "Streaming"
 			},
 			{
-				"rule_set": "GFWList-Site",
+				"rule_set": "geosite-geolocation-!cn",
 				"outbound": "Global"
 			}
 		],
 		"rule_set": [
+			{
+				"tag": "geosite-cn",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-geolocation-cn",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-cn.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-geolocation-!cn",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geoip-cn",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
 			{
 				"tag": "geosite-category-ads-all-ip",
 				"type": "remote",
@@ -748,74 +778,18 @@
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geoip-cn",
+				"tag": "geosite-openai",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GeoIP-CN.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/rule/OpenAI.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geosite-cn",
+				"tag": "geosite-youtube",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GeoSite-CN.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "GFWList-Site",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GFWList-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-private-ip",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Local-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-private",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Local-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geoip-bilibili",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Bilibili-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-bilibili",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Bilibili-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-disney-ip",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Discord-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-disney",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Discord-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -823,7 +797,7 @@
 				"tag": "geoip-google",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GoogleFCM-IP.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -831,87 +805,15 @@
 				"tag": "geosite-google",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/GoogleFCM-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geosite-microsoft-ip",
+				"tag": "geosite-github",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Microsoft-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-microsoft",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Microsoft-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geoip-netflix",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Netflix-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-netflix",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Netflix-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-openai-ip",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/OpenAI-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-openai",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/OpenAI-Site.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geoip-apple",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-apple",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-spotify-ip",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Spotify-IP.srs",
-				"download_detour": "direct",
-				"update_interval": "28h"
-			},
-			{
-				"tag": "geosite-spotify",
-				"type": "remote",
-				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Spotify-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -919,7 +821,7 @@
 				"tag": "geoip-telegram",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Telegram-IP.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -927,23 +829,23 @@
 				"tag": "geosite-telegram",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Telegram-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geosite-tiktok-ip",
+				"tag": "geoip-twitter",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Tiktok-IP.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geosite-tiktok",
+				"tag": "geosite-twitter",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Tiktok-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -964,18 +866,26 @@
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geoip-twitter",
+				"tag": "geosite-private",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Twitter-IP.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
-				"tag": "geosite-twitter",
+				"tag": "geoip-bilibili",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/Twitter-Site.srs",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/bilibili.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-bilibili",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
@@ -984,6 +894,78 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-spotify",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-tiktok",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geoip-netflix",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-netflix",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-disney",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geoip-apple",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-apple",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-amazon",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/amazon.srs",
+				"download_detour": "direct",
+				"update_interval": "28h"
+			},
+			{
+				"tag": "geosite-microsoft",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
 				"download_detour": "direct",
 				"update_interval": "28h"
 			},
