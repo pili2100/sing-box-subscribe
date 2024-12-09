@@ -50,7 +50,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "proxyDns"
+				"server": "localDns"
 			},
 			{
 				"type": "logical",
