@@ -34,6 +34,11 @@
 				"detour": "direct"
 			},
 			{
+			"tag": "local_area_Dns",
+			"address": "192.168.137.1",
+			"detour": "direct"
+			},				
+			{
 				"tag": "nblock",
 				"address": "rcode://refused"
 			},
@@ -62,6 +67,14 @@
 				],
 				"server": "nblock",
 				"disable_cache": true
+			},
+			{
+			"domain_keyword": [
+			"ctgpaas",
+			"srdcloud",
+			"gdtel"
+			],
+			"server": "local_area_Dns"
 			},
 			{
 				"outbound": "any",
