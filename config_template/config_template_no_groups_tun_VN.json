@@ -557,6 +557,7 @@
 			"server": "127.0.0.1",
 			"server_port": 7777,
 			"domain_strategy": "prefer_ipv6",
+			"udp_fragment": true,
 			"udp_over_tcp": {
 				"enabled": true,
 				"version": 2
