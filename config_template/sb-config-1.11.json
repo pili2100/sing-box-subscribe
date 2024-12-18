@@ -9,7 +9,7 @@
 			"external_ui": "ui",
 			"secret": "",
 			"external_ui_download_url": "https://ghproxy.cn/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-			"external_ui_download_detour": "auto",
+			"external_ui_download_detour": "direct",
 			"default_mode": "rule"
 		},
 		"cache_file": {
@@ -683,7 +683,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -691,7 +691,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -699,7 +699,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/applications.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},			
 			{
@@ -707,7 +707,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://cdn.jsdmirror.cn/gh/HosheaPDNX/rule-set@stable/sing-box/srs/AD-IP.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -715,7 +715,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/Cats-Team/AdRules/blob/main/adrules-singbox.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -723,7 +723,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},			
 			{
@@ -731,7 +731,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ai.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -739,7 +739,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/youtube.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -747,7 +747,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/google-cn.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -755,7 +755,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -763,7 +763,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -771,7 +771,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/privateip.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},			
 			{
@@ -779,7 +779,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/bilibili.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -787,7 +787,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tiktok.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -795,7 +795,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/netflix.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -803,7 +803,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/disney.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -811,7 +811,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/apple-cn.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -819,7 +819,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/microsoft-cn.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -827,7 +827,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games-cn.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -835,7 +835,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/max.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			},
 			{
@@ -843,7 +843,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://ghproxy.cn/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/primevideo.srs",
-				"download_detour": "auto",
+				"download_detour": "direct",
 				"update_interval": "28h"
 			}
 		]
