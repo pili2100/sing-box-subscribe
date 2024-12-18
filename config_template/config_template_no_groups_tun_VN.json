@@ -9,7 +9,7 @@
 			"external_ui": "ui",
 			"secret": "",
 			"external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-			"external_ui_download_detour": "direct",
+			"external_ui_download_detour": "proxy",
 			"default_mode": "rule"
 		},
 		"cache_file": {
@@ -774,7 +774,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -782,7 +782,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-cn.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -790,15 +790,15 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
 				"tag": "geoip-cn",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-				"download_detour": "direct",
+				"url": "https://mirror.ghproxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/cnip.mrs",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -814,7 +814,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://github.com/Cats-Team/AdRules/blob/main/adrules-singbox.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -822,7 +822,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/rule/OpenAI.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -830,7 +830,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -838,7 +838,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -846,7 +846,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -854,7 +854,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -862,7 +862,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -870,7 +870,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -878,7 +878,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -886,7 +886,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -894,7 +894,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -902,7 +902,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -910,7 +910,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -918,7 +918,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/bilibili.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -926,7 +926,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -934,7 +934,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -942,7 +942,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -950,7 +950,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -958,7 +958,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -966,7 +966,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -974,7 +974,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -982,7 +982,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -990,7 +990,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -998,7 +998,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/amazon.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -1006,7 +1006,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -1014,7 +1014,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -1022,7 +1022,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
 			{
@@ -1030,7 +1030,7 @@
 				"type": "remote",
 				"format": "binary",
 				"url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs",
-				"download_detour": "direct",
+				"download_detour": "proxy",
 				"update_interval": "28h"
 			}
 		]
