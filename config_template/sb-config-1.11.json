@@ -80,6 +80,10 @@
 				"type": "logical",
 				"mode": "and",
 				"rules": [
+				    {
+						"rule_set": "geosite-proxy",
+						"invert": true					
+					},
 					{
 						"rule_set": "geosite-cn",
 						"invert": true
