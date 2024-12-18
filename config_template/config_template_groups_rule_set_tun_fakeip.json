@@ -751,7 +751,7 @@
 				"tag": "geoip-cn",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://mirror.ghproxy.com/https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/sing-box-ruleset/cnip.srs",
+				"url": "https://mirror.ghproxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs",
 				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
