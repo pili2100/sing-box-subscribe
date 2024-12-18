@@ -57,7 +57,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "localDns"
+				"server": "autoDns"
 			},
 			{
 				"type": "logical",
