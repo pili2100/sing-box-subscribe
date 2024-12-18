@@ -669,7 +669,7 @@
 				"outbound": "Streaming"
 			},
 			{
-				"rule_set": ["geosite-geolocation-!cn","geosite-proxy"],
+				"rule_set": "geosite-proxy",
 				"outbound": "Global"
 			}
 		],
