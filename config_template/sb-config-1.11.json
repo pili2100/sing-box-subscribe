@@ -35,7 +35,7 @@
 			},
 			{
 				"tag": "autoDns",
-				"address": "h3://doh3.dns.nextdns.io/0/l",
+				"address": "h3://dns.nextdns.io/0/l",
 				"strategy": "prefer_ipv6",
 				"address_resolver": "localDns",
 				"detour": "auto"
