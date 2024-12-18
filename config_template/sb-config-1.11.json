@@ -34,13 +34,6 @@
 				"detour": "direct"
 			},
 			{
-				"tag": "autoDns",
-				"address": "h3://dns.nextdns.io/0/l",
-				"strategy": "prefer_ipv6",
-				"address_resolver": "localDns",
-				"detour": "auto"
-			},			
-			{
 				"tag": "nblock",
 				"address": "rcode://refused"
 			},
@@ -57,7 +50,7 @@
 					"cdn.jsdmirror.cn",
 					"fastly.jsdelivr.net"
 				],
-				"server": "autoDns"
+				"server": "localDns"
 			},
 			{
 				"type": "logical",
@@ -72,7 +65,7 @@
 			},
 			{
 				"outbound": "any",
-				"server": "autoDns",
+				"server": "localDns",
 				"disable_cache": true
 			},
 			{
@@ -583,6 +576,14 @@
 				"outbound": "AdBlock"
 			},
 			{
+				"rule_set": ["geosite-private","geosite-privateip"],
+				"outbound": "direct"
+			},
+			{
+				"ip_is_private": true,
+				"outbound": "direct"
+			},
+			{
 				"rule_set": [
 					"geoip-cn",
 					"geosite-cn",
@@ -595,14 +596,6 @@
 					"mixed-in"
 				],
 				"outbound": "loop"
-			},
-			{
-				"rule_set": ["geosite-private","geosite-privateip"],
-				"outbound": "direct"
-			},
-			{
-				"ip_is_private": true,
-				"outbound": "direct"
 			},
 			{
 				"domain": [
