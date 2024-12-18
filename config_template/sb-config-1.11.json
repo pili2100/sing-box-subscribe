@@ -34,6 +34,13 @@
 				"detour": "direct"
 			},
 			{
+				"tag": "autoDns",
+				"address": "h3://doh3.dns.nextdns.io/0/l",
+				"strategy": "prefer_ipv6",
+				"address_resolver": "localDns",
+				"detour": "auto"
+			},			
+			{
 				"tag": "nblock",
 				"address": "rcode://refused"
 			},
@@ -65,7 +72,7 @@
 			},
 			{
 				"outbound": "any",
-				"server": "localDns",
+				"server": "autoDns",
 				"disable_cache": true
 			},
 			{
