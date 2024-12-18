@@ -576,14 +576,6 @@
 				"outbound": "AdBlock"
 			},
 			{
-				"rule_set": ["geosite-private","geosite-privateip"],
-				"outbound": "direct"
-			},
-			{
-				"ip_is_private": true,
-				"outbound": "direct"
-			},
-			{
 				"rule_set": [
 					"geoip-cn",
 					"geosite-cn",
@@ -596,6 +588,14 @@
 					"mixed-in"
 				],
 				"outbound": "loop"
+			},
+			{
+				"rule_set": ["geosite-private","geosite-privateip"],
+				"outbound": "direct"
+			},
+			{
+				"ip_is_private": true,
+				"outbound": "direct"
 			},
 			{
 				"domain": [
