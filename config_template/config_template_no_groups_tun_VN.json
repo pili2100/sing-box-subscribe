@@ -30,7 +30,7 @@
 			{
 				"tag": "localDns",
 				"address": "h3://223.6.6.6/dns-query#h3=true",
-				"strategy": "prefer_ipv4",
+				"strategy": "prefer_ipv6",
 				"detour": "direct"
 			},
 			{
@@ -45,7 +45,7 @@
 			{
 				"tag": "dns_fakeip",
 				"address": "fakeip",
-				"strategy": "prefer_ipv4"
+				"strategy": "prefer_ipv6"
 			}
 		],
 		"rules": [
