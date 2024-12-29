@@ -143,6 +143,7 @@
 				"172.19.0.0/30",
 				"fdfe:dcba:9876::0/126"
 			],
+			"route_exclude_address": ["0.0.0.0/31"],
 			"mtu": 9000,
 			"auto_route": true,
 			"strict_route": true,
