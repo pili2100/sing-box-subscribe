@@ -58,17 +58,6 @@
 				"server": "localDns"
 			},
 			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"rule_set": "geosite-category-ads-all"
-					}
-				],
-				"server": "nblock",
-				"disable_cache": true
-			},
-			{
 			"domain_keyword": [
 			"ctgpaas",
 			"srdcloud",
@@ -95,10 +84,6 @@
 				"rules": [
 					{
 						"rule_set": "geosite-geolocation-!cn",
-						"invert": true
-					},
-					{
-						"rule_set": "geoip-cn",
 						"invert": true
 					},
 					{
@@ -623,6 +608,9 @@
 				"type": "logical",
 				"mode": "or",
 				"rules": [
+					{
+						"rule_set": "geosite-category-ads-all"
+					},				
 					{
 						"network": [
 							"udp"
