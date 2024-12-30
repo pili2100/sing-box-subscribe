@@ -87,10 +87,6 @@
 						"invert": true
 					},
 					{
-						"rule_set": "geoip-cn",
-						"invert": true
-					},
-					{
 						"rule_set": "geosite-geolocation-cn",
 						"invert": true
 					},
