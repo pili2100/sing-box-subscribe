@@ -24,7 +24,7 @@
 				"address": "https://dns.cloudflare.com/dns-query",
 				"strategy": "ipv4_only",
 				"address_resolver": "localDns",
-				"client_subnet": "223.6.6.6/24",
+				"client_subnet": "223.6.6.6/32",
 				"detour": "proxy"
 			},
 			{
