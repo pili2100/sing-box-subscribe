@@ -136,7 +136,7 @@
 	"inbounds": [
 		{
 			"tag": "mixed-in",
-			"type": "mixed",
+			"type": "http",
 			"listen": "127.0.0.1",
 			"listen_port": 2080,
 			"set_system_proxy": true,
@@ -146,7 +146,7 @@
 		},
 		{
 			"tag": "loop-in",
-			"type": "socks",
+			"type": "mixed",
 			"listen": "127.0.0.1",
 			"listen_port": 7891
 		},
