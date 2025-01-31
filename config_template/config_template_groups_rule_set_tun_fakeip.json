@@ -538,7 +538,7 @@
 					},
 					{
 						"protocol": [
-							"dns","quic","tls","stun"
+							"dns","quic"
 						]
 					}
 				],
