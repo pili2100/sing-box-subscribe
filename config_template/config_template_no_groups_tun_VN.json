@@ -149,7 +149,6 @@
 				"utun5",
 				"以太网 3"
 			],
-			"sniff": true,
 			"endpoint_independent_nat": false,
 			"stack": "system",
 			"platform": {
@@ -167,8 +166,7 @@
 			"listen_port": 2080,
 			"set_system_proxy": false,
 			"tcp_fast_open": true,
-			"udp_fragment": true,
-			"sniff": true
+			"udp_fragment": true
 		},
 		{
 			"tag": "loop-in",
@@ -182,7 +180,6 @@
 			"listen": "127.0.0.1",
 			"listen_port": 7777,
 			"detour": "loop-in",
-			"sniff": false,
 			"tcp_fast_open": true,
 			"udp_fragment": true,
 			"domain_strategy": "prefer_ipv4"
@@ -403,14 +400,6 @@
 			]
 		},
 		{
-			"tag": "AdBlock",
-			"type": "selector",
-			"outbounds": [
-				"block",
-				"direct"
-			]
-		},
-		{
 			"tag": "HongKong",
 			"type": "selector",
 			"outbounds": [
@@ -530,14 +519,6 @@
 			"routing_mark": 100
 		},
 		{
-			"type": "dns",
-			"tag": "dns-out"
-		},
-		{
-			"type": "block",
-			"tag": "block"
-		},
-		{
 			"tag": "loop",
 			"type": "socks",
 			"server": "127.0.0.1",
@@ -563,6 +544,10 @@
 		"final": "proxy",
 		"rules": [
 			{
+				"inbound": ["tun","mixed-in"],
+				"action": "sniff"
+			},			
+			{
 				"type": "logical",
 				"mode": "or",
 				"rules": [
@@ -576,11 +561,11 @@
 					},
 					{
 						"protocol": [
-							"dns"
+							"dns","quic","stun"
 						]
 					}
 				],
-				"outbound": "dns-out"
+				"action": "hijack-dns"
 			},
 			{
 				"type": "logical",
@@ -621,7 +606,8 @@
 						]
 					}
 				],
-				"outbound": "AdBlock"
+				"action": "reject",
+				"method": "drop"
 			},
 			{
 				"rule_set": "geosite-private",
