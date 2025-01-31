@@ -519,7 +519,7 @@
 		"final": "proxy",
 		"rules": [
 			{
-				"inbound": ["tun","mixed-in"],
+				"inbound": ["mixed-in"],
 				"action": "sniff"
 			},			
 			{
