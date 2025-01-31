@@ -519,15 +519,16 @@
 	"route": {
 		"auto_detect_interface": true,
 		"final": "proxy",
-		"rules": [
-      {
-				"inbound": ["tun","mixed-in"],
-				"action": "sniff"
-      },			
+		"rules": [		
 			{
 				"type": "logical",
 				"mode": "or",
 				"rules": [
+					{
+						"inbound": ["tun","mixed-in"],
+						"action": "sniff",
+						"sniffer": ["dns","quic","bittorrent","tls"]
+					},	                    				
 					{
 						"port": [
 							53,
