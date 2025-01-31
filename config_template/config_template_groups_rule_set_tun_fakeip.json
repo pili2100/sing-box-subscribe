@@ -527,7 +527,7 @@
 					{
 						"inbound": ["tun","mixed-in"],
 						"action": "sniff",
-						"sniffer": ["dns","quic","bittorrent","tls"]
+						"sniffer": ["dns","quic"]
 					},	                    				
 					{
 						"port": [
