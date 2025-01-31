@@ -522,8 +522,7 @@
 		"rules": [
 			{
 				"inbound": ["tun","mixed-in"],
-				"action": "sniff",
-				"sniffer": ["dns","quic","tls","bittorrent","stun"]
+				"action": "sniff"
 			},			
 			{
 				"type": "logical",
@@ -539,7 +538,7 @@
 					},
 					{
 						"protocol": [
-							"dns"
+							"dns","quic","tls","stun"
 						]
 					}
 				],
