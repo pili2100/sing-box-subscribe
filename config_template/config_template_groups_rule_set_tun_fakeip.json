@@ -538,11 +538,11 @@
 					},
 					{
 						"protocol": [
-							"dns","quic"
+							"dns","quic","stun"
 						]
 					}
 				],
-        "action": "hijack-dns"
+				"action": "hijack-dns"
 			},
 			{
 				"type": "logical",
@@ -560,8 +560,8 @@
 						]
 					}
 				],
-        "action": "reject",
-        "method": "drop"
+				"action": "reject",
+				"method": "drop"
 			},
 			{
 				"rule_set": "geosite-private",
