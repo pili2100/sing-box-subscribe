@@ -30,7 +30,7 @@
 			},
 			{
 				"tag": "localDns",
-				"address": "h3://223.6.6.6/dns-query#h3=true",
+				"address": "h3://223.6.6.6/dns-query",
 				"strategy": "prefer_ipv6",
 				"detour": "direct"
 			},
@@ -531,10 +531,7 @@
 				"rules": [
 					{
 						"port": [
-							53,
-							784,
-							853,
-							5353
+							53
 						]
 					},
 					{
@@ -551,14 +548,6 @@
 				"rules": [
 					{
 						"rule_set": "geosite-category-ads-all"
-					},
-					{
-						"network": [
-							"udp"
-						],
-						"port": [
-							443
-						]
 					}
 				],
 				"action": "reject",
