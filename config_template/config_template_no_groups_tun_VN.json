@@ -766,7 +766,7 @@
 				"tag": "geosite-category-ads-all",
 				"type": "remote",
 				"format": "binary",
-				"url": "https://github.com/Cats-Team/AdRules/raw/refs/heads/main/adrules-singbox.srs",
+				"url": "https://raw.githubusercontent.com/Cats-Team/AdRules/refs/heads/main/adrules-singbox.srs",
 				"download_detour": "proxy",
 				"update_interval": "28h"
 			},
