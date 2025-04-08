@@ -183,14 +183,13 @@
 			"tag": "OpenAI",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America",
 				"Others"
 			],
-			"default": "America"
+			"default": "proxy"
 		},
 		{
 			"tag": "Google",
