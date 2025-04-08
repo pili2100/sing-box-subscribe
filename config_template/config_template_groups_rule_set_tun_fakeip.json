@@ -183,13 +183,13 @@
 			"tag": "OpenAI",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "proxy"
+			]
 		},
 		{
 			"tag": "Google",
@@ -263,8 +263,7 @@
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "TaiWan"
+			]
 		},
 		{
 			"tag": "Spotify",
@@ -289,8 +288,7 @@
 				"Singapore",
 				"Japan",
 				"America"
-			],
-			"default": "Singapore"
+			]
 		},
 		{
 			"tag": "NETFLIX",
@@ -384,8 +382,7 @@
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "HongKong"
+			]
 		},
 		{
 			"tag": "China",
