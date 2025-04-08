@@ -515,7 +515,7 @@
 			},
 			"tcp_fast_open": true,
 			"network": "tcp"
-		},
+		}
 	],
 	"route": {
 		"default_domain_resolver": {
