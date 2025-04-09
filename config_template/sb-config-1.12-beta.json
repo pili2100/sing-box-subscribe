@@ -20,31 +20,31 @@
 	},
 	"dns": {
 		"servers": [
-			{
-				"type": "https",
-				"tag": "proxyDns",
-				"server": "cloudflare-dns.com",
-				"server_port": 443,
-				"domain_resolver": "localDns",
-				"detour": "proxy"
-			},
-			{
-				"tag": "localDns",
-				"type": "h3",
-				"server": "223.6.6.6"
-			},
-			{
-				"tag": "local_area_Dns",
-				"type": "local",
-				"inet4_bind_address": "192.168.10.1",
-				"detour": "direct-out"
-			},
-			{
-				"tag": "dns_fakeip",
-				"type": "fakeip",
-				"inet4_range": "198.18.0.0/15",
-				"inet6_range": "fc00::/18"
-			}
+      {
+        "type": "https",
+        "tag": "proxyDns",
+        "server": "cloudflare-dns.com",
+        "server_port": 443,
+        "domain_resolver": "localDns",
+        "detour": "proxy"
+      },
+      {
+        "tag": "localDns",
+        "type": "h3",
+        "server": "223.6.6.6"
+      },
+      {
+        "tag": "local_area_Dns",
+        "type": "local",
+        "inet4_bind_address": "192.168.10.1",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "dns_fakeip",
+        "type": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
 		],
 		"rules": [
 			{
@@ -56,12 +56,9 @@
 				"server": "localDns"
 			},
 			{
-				"domain_keyword": [
-					"ctgpaas",
-					"srdcloud",
-					"gdtel"
-				],
-				"server": "local_area_Dns"
+				"outbound": "any",
+				"server": "localDns",
+				"disable_cache": true
 			},
 			{
 				"clash_mode": "direct",
@@ -89,8 +86,6 @@
 					}
 				],
 				"server": "proxyDns",
-				"strategy": "ipv4_only",
-				"client_subnet": "1.2.4.8/32",
 				"disable_cache": true
 			},
 			{
@@ -122,7 +117,11 @@
 		],
 		"independent_cache": true,
 		"final": "proxyDns",
-		"strategy": "prefer_ipv4"
+		"fakeip": {
+			"enabled": true,
+			"inet4_range": "198.18.0.0/15",
+			"inet6_range": "fc00::/18"
+		}
 	},
 	"inbounds": [
 		{
@@ -148,9 +147,11 @@
 		},
 		{
 			"tag": "mixed-in",
-			"type": "mixed",
+			"type": "http",
 			"listen": "127.0.0.1",
-			"listen_port": 2080
+			"listen_port": 2080,
+			"tcp_fast_open": true,
+			"udp_fragment": true
 		},
 		{
 			"tag": "loop-in",
@@ -184,18 +185,19 @@
 			"tag": "OpenAI",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "America"
+			]
 		},
 		{
 			"tag": "Google",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -208,6 +210,7 @@
 			"tag": "Telegram",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -220,6 +223,7 @@
 			"tag": "Twitter",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -232,6 +236,7 @@
 			"tag": "Facebook",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -253,19 +258,20 @@
 			"tag": "Bahamut",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "TaiWan"
+			]
 		},
 		{
 			"tag": "Spotify",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -278,18 +284,19 @@
 			"tag": "TikTok",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America"
-			],
-			"default": "Singapore"
+			]
 		},
 		{
 			"tag": "NETFLIX",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -302,6 +309,7 @@
 			"tag": "Disney+",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -314,6 +322,7 @@
 			"tag": "Apple",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -327,6 +336,7 @@
 			"tag": "Microsoft",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -353,6 +363,7 @@
 			"tag": "Streaming",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -365,6 +376,7 @@
 			"tag": "Global",
 			"type": "selector",
 			"outbounds": [
+				"proxy",
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -372,8 +384,7 @@
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "HongKong"
+			]
 		},
 		{
 			"tag": "China",
@@ -387,8 +398,8 @@
 			"tag": "HongKong",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -403,8 +414,8 @@
 			"tag": "TaiWan",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -419,8 +430,8 @@
 			"tag": "Singapore",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -435,8 +446,8 @@
 			"tag": "Japan",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -451,8 +462,8 @@
 			"tag": "America",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -467,8 +478,8 @@
 			"tag": "Others",
 			"type": "selector",
 			"outbounds": [
-				"{all}",
-				"proxy"
+				"proxy",
+				"{all}"
 			],
 			"filter": [
 				{
@@ -507,7 +518,8 @@
 			"type": "socks",
 			"server": "127.0.0.1",
 			"server_port": 7777,
-			"reuse_addr": false,
+			"domain_strategy": "prefer_ipv6",
+			"reuse_addr": true,
 			"udp_fragment": true,
 			"udp_over_tcp": {
 				"enabled": true,
@@ -518,9 +530,6 @@
 		}
 	],
 	"route": {
-		"default_domain_resolver": {
-			"server": "localDns"
-		},
 		"auto_detect_interface": true,
 		"final": "proxy",
 		"rules": [
@@ -549,29 +558,6 @@
 					}
 				],
 				"action": "hijack-dns"
-			},
-			{
-				"type": "logical",
-				"mode": "or",
-				"rules": [
-					{
-						"domain_keyword": "srdcloud"
-					},
-					{
-						"process_name": "Proxifier"
-					},
-					{
-						"ip_cidr": [
-							"132.0.0.0/8",
-							"192.168.0.0/16",
-							"10.0.0.0/8",
-							"127.0.0.0/8",
-							"172.16.0.0/12",
-							"100.64.0.0/10"
-						]
-					}
-				],
-				"outbound": "direct-out"
 			},
 			{
 				"type": "logical",
