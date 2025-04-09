@@ -176,7 +176,7 @@
 			"tag": "OpenAI",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",
+			  "proxy",
 				"TaiWan",
 				"Singapore",
 				"Japan",
@@ -188,7 +188,7 @@
 			"tag": "Google",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -201,7 +201,7 @@
 			"tag": "Telegram",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -214,7 +214,7 @@
 			"tag": "Twitter",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -227,7 +227,7 @@
 			"tag": "Facebook",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -249,21 +249,20 @@
 			"tag": "Bahamut",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
 				"Japan",
 				"America",
 				"Others"
-			],
-			"default": "TaiWan"
+			]
 		},
 		{
 			"tag": "Spotify",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -276,7 +275,7 @@
 			"tag": "TikTok",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -288,7 +287,7 @@
 			"tag": "NETFLIX",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -301,7 +300,7 @@
 			"tag": "Disney+",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -314,7 +313,7 @@
 			"tag": "Apple",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -328,7 +327,7 @@
 			"tag": "Microsoft",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -355,7 +354,7 @@
 			"tag": "Streaming",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -368,7 +367,7 @@
 			"tag": "Global",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -390,7 +389,7 @@
 			"tag": "HongKong",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -406,7 +405,7 @@
 			"tag": "TaiWan",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -422,7 +421,7 @@
 			"tag": "Singapore",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -438,7 +437,7 @@
 			"tag": "Japan",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -454,7 +453,7 @@
 			"tag": "America",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -470,7 +469,7 @@
 			"tag": "Others",
 			"type": "selector",
 			"outbounds": [
-			    "proxy",			
+			  "proxy",			
 				"{all}"
 			],
 			"filter": [
