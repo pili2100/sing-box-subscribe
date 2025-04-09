@@ -19,13 +19,13 @@
 		}
 	},
 	"dns": {
-		"servers": [
+    "servers": [
       {
         "type": "https",
         "tag": "proxyDns",
         "server": "cloudflare-dns.com",
         "server_port": 443,
-        "domain_resolver": "localDns",
+        "domain_resolver": {"server": "localDns","client_subnet": "1.2.4.8/32"},	
         "detour": "proxy"
       },
       {
@@ -45,74 +45,74 @@
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
       }
-		],
-		"rules": [
-			{
-				"domain_suffix": [
-					"mirror.ghproxy.com",
-					"cdn.jsdmirror.cn",
-					"fastly.jsdelivr.net"
-				],
-				"server": "localDns"
-			},
-			{
-				"clash_mode": "direct",
-				"server": "localDns"
-			},
-			{
-				"clash_mode": "global",
-				"server": "dns_fakeip"
-			},
-			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"rule_set": "geosite-geolocation-!cn",
-						"invert": true
-					},
-					{
-						"rule_set": "geosite-geolocation-cn",
-						"invert": true
-					},
-					{
-						"rule_set": "geosite-cn",
-						"invert": true
-					}
-				],
-				"server": "proxyDns",
-				"disable_cache": true
-			},
-			{
-				"query_type": [
-					"A",
-					"CNAME"
-				],
-				"rule_set": [
-					"geosite-cn",
-					"geosite-geolocation-cn"
-				],
-				"server": "localDns",
-				"disable_cache": true
-			},
-			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"query_type": [
-							"A",
-							"AAAA"
-						]
-					}
-				],
-				"server": "dns_fakeip",
-				"rewrite_ttl": 30
-			}
-		],
-		"independent_cache": true,
-		"final": "proxyDns",
-		"strategy": "prefer_ipv4"
+    ],
+    "rules": [
+      {
+        "domain_suffix": [
+          "mirror.ghproxy.com",
+          "cdn.jsdmirror.cn",
+          "fastly.jsdelivr.net"
+        ],
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "global",
+        "server": "dns_fakeip"
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geosite-geolocation-cn",
+            "invert": true
+          },
+          {
+            "rule_set": "geosite-cn",
+            "invert": true
+          }
+        ],
+        "server": "proxyDns",
+        "disable_cache": true
+      },
+      {
+        "query_type": [
+          "A",
+          "CNAME"
+        ],
+        "rule_set": [
+          "geosite-cn",
+          "geosite-geolocation-cn"
+        ],
+        "server": "localDns",
+        "disable_cache": true
+      },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
+          }
+        ],
+        "server": "dns_fakeip",
+        "rewrite_ttl": 30
+      }
+    ],
+    "independent_cache": true,
+    "final": "proxyDns",
+    "strategy": "ipv4_only"
 	},
 	"inbounds": [
 		{
@@ -521,6 +521,9 @@
 		}
 	],
 	"route": {
+    "default_domain_resolver": {
+      "server": "localDns"
+    },		
 		"auto_detect_interface": true,
 		"final": "proxy",
 		"rules": [
