@@ -15,17 +15,20 @@
 		"cache_file": {
 			"enabled": true,
 			"store_fakeip": true,
-			"store_rdrc": false
+			"store_rdrc": true
 		}
 	},
 	"dns": {
-    "servers": [
+		"servers": [
       {
         "type": "https",
         "tag": "proxyDns",
         "server": "cloudflare-dns.com",
         "server_port": 443,
-        "domain_resolver": {"server": "localDns","client_subnet": "1.2.4.8/32"},	
+        "domain_resolver": {
+          "server": "localDns",
+          "client_subnet": "1.2.4.8/32"
+        },
         "detour": "proxy"
       },
       {
@@ -45,74 +48,81 @@
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
       }
-    ],
-    "rules": [
-      {
-        "domain_suffix": [
-          "mirror.ghproxy.com",
-          "cdn.jsdmirror.cn",
-          "fastly.jsdelivr.net"
-        ],
-        "server": "localDns"
-      },
-      {
-        "clash_mode": "direct",
-        "server": "localDns"
-      },
-      {
-        "clash_mode": "global",
-        "server": "dns_fakeip"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geosite-geolocation-cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geosite-cn",
-            "invert": true
-          }
-        ],
-        "server": "proxyDns",
-        "disable_cache": true
-      },
-      {
-        "query_type": [
-          "A",
-          "CNAME"
-        ],
-        "rule_set": [
-          "geosite-cn",
-          "geosite-geolocation-cn"
-        ],
-        "server": "localDns",
-        "disable_cache": true
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ]
-          }
-        ],
-        "server": "dns_fakeip",
-        "rewrite_ttl": 30
-      }
-    ],
-    "independent_cache": true,
-    "final": "proxyDns",
-    "strategy": "ipv4_only"
+		],
+		"rules": [
+			{
+				"domain_suffix": [
+					"mirror.ghproxy.com",
+					"cdn.jsdmirror.cn",
+					"fastly.jsdelivr.net"
+				],
+				"server": "localDns"
+			},
+			{
+			"domain_keyword": [
+			"ctgpaas",
+			"srdcloud",
+			"gdtel"
+			],
+			"server": "local_area_Dns"
+			},
+			{
+				"clash_mode": "direct",
+				"server": "localDns"
+			},
+			{
+				"clash_mode": "global",
+				"server": "dns_fakeip"
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"rule_set": "geosite-geolocation-!cn",
+						"invert": true
+					},
+					{
+						"rule_set": "geosite-geolocation-cn",
+						"invert": true
+					},
+					{
+						"rule_set": "geosite-cn",
+						"invert": true
+					}
+				],
+				"server": "proxyDns",
+				"disable_cache": true
+			},
+			{
+				"query_type": [
+					"A",
+					"CNAME"
+				],
+				"rule_set": [
+					"geosite-cn",
+					"geosite-geolocation-cn"
+				],
+				"server": "localDns",
+				"disable_cache": true
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"query_type": [
+							"A",
+							"AAAA"
+						]
+					}
+				],
+				"server": "dns_fakeip",
+				"rewrite_ttl": 30
+			}
+		],
+		"independent_cache": true,
+		"strategy": "ipv4_only"
 	},
 	"inbounds": [
 		{
@@ -122,10 +132,14 @@
 				"172.19.0.1/30",
 				"fdfe:dcba:9876::0/126"
 			],
-			"route_exclude_address": "0.0.0.0/31",
+			"route_exclude_address": "0.0.0.0/31",			
 			"mtu": 9000,
 			"auto_route": true,
 			"strict_route": true,
+			"exclude_interface": [
+				"utun5",
+				"以太网 3"
+			],
 			"endpoint_independent_nat": false,
 			"stack": "system",
 			"platform": {
@@ -141,6 +155,7 @@
 			"type": "http",
 			"listen": "127.0.0.1",
 			"listen_port": 2080,
+			"set_system_proxy": false,
 			"tcp_fast_open": true,
 			"udp_fragment": true
 		},
@@ -157,8 +172,7 @@
 			"listen_port": 7777,
 			"detour": "loop-in",
 			"tcp_fast_open": true,
-			"udp_fragment": true,
-			"domain_strategy": "prefer_ipv4"
+			"udp_fragment": true
 		}
 	],
 	"outbounds": [
@@ -176,7 +190,7 @@
 			"tag": "OpenAI",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"TaiWan",
 				"Singapore",
 				"Japan",
@@ -188,7 +202,7 @@
 			"tag": "Google",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -201,7 +215,7 @@
 			"tag": "Telegram",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -214,7 +228,7 @@
 			"tag": "Twitter",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -227,7 +241,7 @@
 			"tag": "Facebook",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -249,7 +263,7 @@
 			"tag": "Bahamut",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -262,7 +276,7 @@
 			"tag": "Spotify",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -275,7 +289,7 @@
 			"tag": "TikTok",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -287,7 +301,7 @@
 			"tag": "NETFLIX",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -300,7 +314,7 @@
 			"tag": "Disney+",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -313,7 +327,7 @@
 			"tag": "Apple",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -327,7 +341,7 @@
 			"tag": "Microsoft",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -354,7 +368,7 @@
 			"tag": "Streaming",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"HongKong",
 				"TaiWan",
 				"Singapore",
@@ -367,7 +381,7 @@
 			"tag": "Global",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"direct",
 				"HongKong",
 				"TaiWan",
@@ -389,7 +403,7 @@
 			"tag": "HongKong",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -405,7 +419,7 @@
 			"tag": "TaiWan",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -421,7 +435,7 @@
 			"tag": "Singapore",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -437,7 +451,7 @@
 			"tag": "Japan",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -453,7 +467,7 @@
 			"tag": "America",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -469,7 +483,7 @@
 			"tag": "Others",
 			"type": "selector",
 			"outbounds": [
-				"proxy",
+                "proxy",			
 				"{all}"
 			],
 			"filter": [
@@ -491,7 +505,7 @@
 				{
 					"action": "exclude",
 					"keywords": [
-						"网站|地址|剩余|流量|过期|时间|有效"
+						"网站|地址|剩余|流量|过期|时间|有效|套餐"
 					]
 				}
 			],
@@ -518,22 +532,24 @@
 			},
 			"tcp_fast_open": true,
 			"network": "tcp"
+		},
+		{
+			"tag": "direct-out",
+			"type": "direct",
+			"bind_interface": "WLAN"
 		}
 	],
 	"route": {
     "default_domain_resolver": {
       "server": "localDns"
-    },		
+    },        	
 		"auto_detect_interface": true,
 		"final": "proxy",
 		"rules": [
 			{
-				"inbound": [
-					"tun",
-					"mixed-in"
-				],
+				"inbound": ["tun","mixed-in"],
 				"action": "sniff"
-			},
+			},			
 			{
 				"type": "logical",
 				"mode": "or",
@@ -545,13 +561,34 @@
 					},
 					{
 						"protocol": [
-							"dns",
-							"quic",
-							"stun"
+							"dns","quic","stun"
 						]
 					}
 				],
 				"action": "hijack-dns"
+			},
+			{
+				"type": "logical",
+				"mode": "or",
+				"rules": [
+					{
+						"domain_keyword": "srdcloud"
+					},
+					{
+						"process_name": "Proxifier"
+					},
+					{
+						"ip_cidr": [
+							"132.0.0.0/8",
+							"192.168.0.0/16",
+							"10.0.0.0/8",
+							"127.0.0.0/8",
+							"172.16.0.0/12",
+							"100.64.0.0/10"
+						]
+					}
+				],
+				"outbound": "direct-out"
 			},
 			{
 				"type": "logical",
