@@ -503,8 +503,7 @@
 		},
 		{
 			"type": "direct",
-			"tag": "direct",
-			"routing_mark": 100
+			"tag": "direct"
 		},
 		{
 			"tag": "loop",
