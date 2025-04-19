@@ -98,7 +98,7 @@
 	},
 	"inbounds": [
 		{
-			"tag": "tun-in",
+			"tag": "tun",
 			"type": "tun",
 			"address": [
 				"172.19.0.1/30",
@@ -521,7 +521,7 @@
 		"rules": [
 			{
 				"inbound": [
-					"tun-in",
+					"tun",
 					"mixed-in",
 					"loop-in"
 				],
