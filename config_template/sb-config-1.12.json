@@ -69,7 +69,7 @@
 				],
 				"server": "proxyDns",
 				"strategy": "ipv4_only",
-				"client_subnet": "1.2.4.8/32",				
+				"client_subnet": "1.2.4.8/32",
 				"disable_cache": true
 			},
 			{
@@ -522,6 +522,13 @@
 		"final": "proxy",
 		"rules": [
 			{
+				"inbound": [
+					"tun",
+					"mixed-in"
+				],
+				"action": "sniff"
+			},
+			{
 				"type": "logical",
 				"mode": "or",
 				"rules": [
@@ -537,18 +544,6 @@
 					}
 				],
 				"action": "hijack-dns"
-			},
-      {
-        "inbound": ["loop-in","tun"],
-        "action": "resolve",
-				"server": "proxyDns",
-        "strategy": "ipv4_only"
-      },			
-			{
-				"inbound": [
-          "loop-in","tun","mixed-in"
-				],
-				"action": "sniff"
 			},
 			{
 				"type": "logical",
@@ -572,18 +567,18 @@
 					}
 				],
 				"outbound": "direct-out"
-			},			
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "rule_set": "geosite-category-ads-all"
-          }
-        ],
-        "action": "reject",
-        "method": "drop"
-      },
+			},
+			{
+				"type": "logical",
+				"mode": "or",
+				"rules": [
+					{
+						"rule_set": "geosite-category-ads-all"
+					}
+				],
+				"action": "reject",
+				"method": "drop"
+			},
 			{
 				"clash_mode": "direct",
 				"outbound": "direct"
@@ -608,6 +603,37 @@
 				"outbound": "China"
 			},
 			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"loop-in",
+							"tun"
+						]
+					},
+					{
+						"rule_set": [
+							"geoip-cn",
+							"geosite-cn",
+							"geosite-cn",
+							"geosite-geolocation-cn"
+						],
+						"invert": true
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"strategy": "ipv4_only"
+			},
+			{
+				"inbound": [
+					"tun",
+					"mixed-in"
+				],
+				"outbound": "loop"
+			},			
+			{
 				"domain": [
 					"clash.razord.top",
 					"yacd.metacubex.one",
@@ -615,7 +641,7 @@
 					"d.metacubex.one"
 				],
 				"outbound": "direct"
-			},			
+			},
 			{
 				"rule_set": "geosite-openai",
 				"outbound": "OpenAI"
@@ -708,14 +734,7 @@
 			{
 				"rule_set": "geosite-geolocation-!cn",
 				"outbound": "Global"
-			},
-			{
-				"inbound": [
-					"tun",
-					"mixed-in"
-				],
-				"outbound": "loop"
-			}			
+			}
 		],
 		"rule_set": [
 			{
