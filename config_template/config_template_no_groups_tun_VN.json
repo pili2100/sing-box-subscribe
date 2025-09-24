@@ -84,10 +84,6 @@
                 "mode": "and",
                 "rules": [
                     {
-                        "rule_set": "geosite-geolocation-!cn",
-                        "invert": true
-                    },
-                    {
                         "rule_set": "geosite-geolocation-cn",
                         "invert": true
                     },
@@ -1024,4 +1020,5 @@
         ]
     }
 }
+
 
