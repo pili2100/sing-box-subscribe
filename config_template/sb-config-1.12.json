@@ -55,10 +55,6 @@
 				"mode": "and",
 				"rules": [
 					{
-						"rule_set": "geosite-geolocation-!cn",
-						"invert": true
-					},
-					{
 						"rule_set": "geosite-geolocation-cn",
 						"invert": true
 					},
@@ -113,10 +109,21 @@
 			"tag": "tun",
 			"type": "tun",
 			"address": [
-				"172.19.0.1/30",
-				"fdfe:dcba:9876::0/126"
+				"172.18.0.1/30",
+				"fdfe:dcba:9876::1/126"
 			],
-			"route_exclude_address": "0.0.0.0/31",
+			"route_address": [
+				"0.0.0.0/1",
+				"128.0.0.0/1",
+				"::/1",
+				"8000::/1"
+			],
+			"route_exclude_address": [
+				"192.168.0.0/16",
+				"10.0.0.0/8",
+				"172.16.0.0/12",
+				"fc00::/7"
+			],
 			"mtu": 9000,
 			"auto_route": true,
 			"strict_route": true,
@@ -603,37 +610,6 @@
 				"outbound": "China"
 			},
 			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"inbound": [
-							"loop-in",
-							"tun"
-						]
-					},
-					{
-						"rule_set": [
-							"geoip-cn",
-							"geosite-cn",
-							"geosite-cn",
-							"geosite-geolocation-cn"
-						],
-						"invert": true
-					}
-				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"strategy": "ipv4_only"
-			},
-			{
-				"inbound": [
-					"tun",
-					"mixed-in"
-				],
-				"outbound": "loop"
-			},			
-			{
 				"domain": [
 					"clash.razord.top",
 					"yacd.metacubex.one",
@@ -730,6 +706,36 @@
 					"geosite-primevideo"
 				],
 				"outbound": "Streaming"
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"loop-in",
+							"tun"
+						]
+					},
+					{
+						"rule_set": [
+							"geoip-cn",
+							"geosite-cn",
+							"geosite-geolocation-cn"
+						],
+						"invert": true
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"strategy": "ipv4_only"
+			},
+			{
+				"inbound": [
+					"tun",
+					"mixed-in"
+				],
+				"outbound": "loop"
 			},
 			{
 				"rule_set": "geosite-geolocation-!cn",
