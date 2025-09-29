@@ -22,7 +22,7 @@
 		"servers": [
 			{
 				"tag": "proxyDns",
-				"address": "https://cloudflare-dns.com/dns-query#h3=true",
+				"address": "https://cloudflare-dns.com/dns-query",
 				"strategy": "ipv4_only",
 				"address_resolver": "localDns",
 				"client_subnet": "1.2.4.8/32",
