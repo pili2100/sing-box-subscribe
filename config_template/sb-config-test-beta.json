@@ -697,8 +697,21 @@
 				"rules": [
 					{
 						"inbound": [
-							"loop-in",
-							"tun"
+							"loop-in"
+						]
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"strategy": "ipv4_only"
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"mixed-in"
 						]
 					},
 					{
@@ -710,20 +723,12 @@
 						"invert": true
 					}
 				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"strategy": "ipv4_only"
+				"outbound": "loop"
 			},
 			{
 				"rule_set": "geosite-geolocation-!cn",
 				"outbound": "Global"
-			},
-			{
-				"inbound": [
-					"mixed-in"
-				],
-				"outbound": "loop"
-			}			
+			}
 		],
 		"rule_set": [
 			{
