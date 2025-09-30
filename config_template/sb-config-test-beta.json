@@ -715,15 +715,15 @@
 				"strategy": "ipv4_only"
 			},
 			{
+				"rule_set": "geosite-geolocation-!cn",
+				"outbound": "Global"
+			},
+			{
 				"inbound": [
 					"mixed-in"
 				],
 				"outbound": "loop"
-			},
-			{
-				"rule_set": "geosite-geolocation-!cn",
-				"outbound": "Global"
-			}
+			}			
 		],
 		"rule_set": [
 			{
