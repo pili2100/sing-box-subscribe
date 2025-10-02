@@ -713,7 +713,20 @@
 				"rules": [
 					{
 						"inbound": [
-							"loop-in",
+							"loop-in"
+						]
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"strategy": "ipv4_only"
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
 							"tun"
 						]
 					},
@@ -725,15 +738,6 @@
 						],
 						"invert": true
 					}
-				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"strategy": "ipv4_only"
-			},
-			{
-				"inbound": [
-					"tun",
-					"mixed-in"
 				],
 				"outbound": "loop"
 			},
