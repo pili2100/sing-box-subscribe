@@ -719,6 +719,7 @@
 				],
 				"action": "resolve",
 				"server": "proxyDns",
+				"client_subnet": "1.2.4.8/32",
 				"strategy": "ipv4_only"
 			},
 			{
