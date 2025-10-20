@@ -32,7 +32,7 @@
 			{
 				"tag": "localDns",
 				"type": "h3",
-				"server": "223.5.5.5"
+				"server": "223.6.6.6"
 			},
 			{
 				"tag": "dns_fakeip",
@@ -688,6 +688,7 @@
 				],
 				"action": "resolve",
 				"server": "proxyDns",
+				"client_subnet": "1.2.4.8/32",
 				"strategy": "ipv4_only"
 			},
 			{
