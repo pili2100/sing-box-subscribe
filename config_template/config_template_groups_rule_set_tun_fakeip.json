@@ -65,7 +65,7 @@
 				],
 				"server": "proxyDns",
 				"strategy": "ipv4_only",
-				"client_subnet": "1.2.4.8/32",
+				"client_subnet": "104.174.125.138/32",
 				"disable_cache": true
 			},
 			{
