@@ -23,7 +23,7 @@
 			{
 				"type": "https",
 				"tag": "proxyDns",
-				"server": "cloudflare-dns.com",
+				"server": "dns.quad9.net",
 				"domain_resolver": {
 					"server": "localDns"
 				},
@@ -65,7 +65,7 @@
 				],
 				"server": "proxyDns",
 				"strategy": "ipv4_only",
-				"client_subnet": "1.2.4.8/32",
+				"client_subnet": "104.174.125.138/32",
 				"disable_cache": true
 			},
 			{
@@ -573,6 +573,41 @@
 				"outbound": "China"
 			},
 			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"loop-in"
+						]
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"client_subnet": "104.174.125.138/32",
+				"strategy": "ipv4_only"
+			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"mixed-in"
+						]
+					},
+					{
+						"rule_set": [
+							"geoip-cn",
+							"geosite-cn",
+							"geosite-geolocation-cn"
+						],
+						"invert": true
+					}
+				],
+				"outbound": "loop"
+			},			
+			{
 				"domain": [
 					"clash.razord.top",
 					"yacd.metacubex.one",
@@ -669,41 +704,6 @@
 					"geosite-primevideo"
 				],
 				"outbound": "Streaming"
-			},
-			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"inbound": [
-							"loop-in"
-						]
-					}
-				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"client_subnet": "1.2.4.8/32",
-				"strategy": "ipv4_only"
-			},
-			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"inbound": [
-							"mixed-in"
-						]
-					},
-					{
-						"rule_set": [
-							"geoip-cn",
-							"geosite-cn",
-							"geosite-geolocation-cn"
-						],
-						"invert": true
-					}
-				],
-				"outbound": "loop"
 			},
 			{
 				"rule_set": "geosite-geolocation-!cn",
