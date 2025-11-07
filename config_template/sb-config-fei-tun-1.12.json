@@ -23,7 +23,7 @@
 			{
 				"type": "https",
 				"tag": "proxyDns",
-				"server": "dns.quad9.net",
+				"server": "dns11.quad9.net",
 				"domain_resolver": {
 					"server": "localDns"
 				},
