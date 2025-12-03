@@ -603,6 +603,26 @@
 				"outbound": "direct"
 			},
 			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"tun"
+						]
+					},
+					{
+						"rule_set": [
+							"geoip-cn",
+							"geosite-cn",
+							"geosite-geolocation-cn"
+						],
+						"invert": true
+					}
+				],
+				"outbound": "loop"
+			},			
+			{
 				"rule_set": [
 					"geoip-cn",
 					"geosite-cn"
@@ -623,27 +643,7 @@
 				"server": "proxyDns",
 				"client_subnet": "104.174.125.138/32",
 				"strategy": "ipv4_only"
-			},
-			{
-				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"inbound": [
-							"tun"
-						]
-					},
-					{
-						"rule_set": [
-							"geoip-cn",
-							"geosite-cn",
-							"geosite-geolocation-cn"
-						],
-						"invert": true
-					}
-				],
-				"outbound": "loop"
-			},			
+			},	
 			{
 				"domain": [
 					"clash.razord.top",
