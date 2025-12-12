@@ -76,7 +76,7 @@
             "query_type": [
               "A",
               "CNAME"
-            ],
+            ]
           },
           {
             "rule_set": [
