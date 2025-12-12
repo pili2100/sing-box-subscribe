@@ -601,7 +601,7 @@
 			},
 			{
 				"type": "logical",
-				"mode": "or",
+				"mode": "and",
 				"rules": [
 					{
 						"type": "logical",
@@ -626,23 +626,6 @@
 							"loop-in"
 						],
 						"rule_set": [
-							"geosite-youtube",
-							"geosite-openai",
-							"geosite-google",
-							"geosite-github",
-							"geosite-telegram",
-							"geosite-twitter",
-							"geosite-facebook",
-							"geosite-bahamut",
-							"geosite-spotify",
-							"geosite-tiktok",
-							"geosite-netflix",
-							"geosite-disney",
-							"geosite-apple",
-							"geosite-amazon",
-							"geosite-microsoft",
-							"geosite-hbo",
-							"geosite-primevideo",
 							"geosite-geolocation-!cn"
 						]
 					}
