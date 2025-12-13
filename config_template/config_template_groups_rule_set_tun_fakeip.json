@@ -603,7 +603,7 @@
       },
       {
         "type": "logical",
-        "mode": "or",
+        "mode": "and",
         "rules": [
           {
             "inbound": [
