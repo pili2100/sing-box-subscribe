@@ -604,22 +604,14 @@
         "mode": "or",
         "rules": [
           {
-            "type": "logical",
-            "mode": "and",
-            "rules": [
-              {
-                "inbound": [
-                  "loop-in"
-                ]
-              },
-              {
-                "rule_set": [
-                  "geosite-geolocation-!cn"
-                ],
-                "invert": true
-              }
-            ]
-          },
+            "inbound": [
+              "loop-in"
+            ],
+            "rule_set": [
+              "geosite-geolocation-!cn"
+            ],
+			"invert": true
+          },		  
           {
             "inbound": [
               "loop-in"
@@ -632,7 +624,6 @@
         "action": "resolve",
         "server": "proxyDns",
         "client_subnet": "104.174.125.138/32",
-        "rewrite_ttl": 30,
         "strategy": "ipv4_only"
       },
       {
