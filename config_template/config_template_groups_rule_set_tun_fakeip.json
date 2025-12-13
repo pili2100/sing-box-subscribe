@@ -76,9 +76,7 @@
             "query_type": [
               "A",
               "CNAME"
-            ]
-          },
-          {
+            ],
             "rule_set": [
               "geosite-cn",
               "geosite-geolocation-cn"
@@ -603,17 +601,24 @@
       },
       {
         "type": "logical",
-        "mode": "and",
+        "mode": "or",
         "rules": [
           {
-            "inbound": [
-              "loop-in"
-            ],
-            "rule_set": [
-              "geosite-cn",
-              "geosite-geolocation-cn"
-            ],
-            "invert": true
+            "type": "logical",
+            "mode": "and",
+            "rules": [
+              {
+                "inbound": [
+                  "loop-in"
+                ]
+              },
+              {
+                "rule_set": [
+                  "geosite-geolocation-!cn"
+                ],
+                "invert": true
+              }
+            ]
           },
           {
             "inbound": [
@@ -621,13 +626,13 @@
             ],
             "rule_set": [
               "geosite-geolocation-!cn"
-            ],
-            "invert": true
+            ]
           }
         ],
         "action": "resolve",
         "server": "proxyDns",
         "client_subnet": "104.174.125.138/32",
+        "rewrite_ttl": 30,
         "strategy": "ipv4_only"
       },
       {
