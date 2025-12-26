@@ -23,8 +23,8 @@
 			{
 				"type": "https",
 				"tag": "proxyDns",
-        "server": "v.recipes",
-        "path": "/dns/dns.google/dns-query",
+				"server": "v.recipes",
+				"path": "/dns/dns.google/dns-query",
 				"domain_resolver": {
 					"server": "localDns"
 				},
