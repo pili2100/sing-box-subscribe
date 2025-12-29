@@ -24,7 +24,7 @@
         "type": "https",
         "tag": "proxyDns",
 				"server": "v.recipes",
-				"path": "/dns/dns.google/dns-query",
+				"path": "/dns-ecs",
         "domain_resolver": {
           "server": "localDns"
         },
