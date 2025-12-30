@@ -24,7 +24,7 @@
 				"type": "https",
 				"tag": "proxyDns",
 				"server": "v.recipes",
-				"path": "/dns-ecs",
+				"path": "/mq/dns.google/dns-query/mq/dooh.cloudflare-dns.com/dns-query",
 				"domain_resolver": {
 					"server": "localDns"
 				},
