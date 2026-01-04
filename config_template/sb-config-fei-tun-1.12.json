@@ -117,9 +117,10 @@
     },
     {
       "tag": "loop-in",
-      "type": "mixed",
+      "type": "socks",
       "listen": "127.0.0.1",
       "listen_port": 7891,
+			"reuse_addr": true,
       "tcp_fast_open": true,
       "udp_fragment": true
     }
@@ -471,7 +472,7 @@
       "type": "socks",
       "server": "127.0.0.1",
       "server_port": 7891,
-      "reuse_addr": true,
+			"version": "5",
       "udp_fragment": true,
       "udp_over_tcp": {
         "enabled": true,
@@ -643,7 +644,6 @@
         "action": "resolve",
         "server": "proxyDns",
         "client_subnet": "104.174.125.138/32",
-        "rewrite_ttl": 30,
         "strategy": "ipv4_only"
       },
       {
