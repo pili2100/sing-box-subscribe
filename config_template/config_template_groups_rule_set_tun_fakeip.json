@@ -26,7 +26,8 @@
 				"server": "v.recipes",
 				"path": "/mq/dns.google/dns-query/mq/dns.adguard-dns.com/dns-query",
 				"domain_resolver": {
-					"server": "localDns"
+					"server": "localDns",
+					"strategy": "prefer_ipv4"
 				},
 				"detour": "proxy"
 			},
