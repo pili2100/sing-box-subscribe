@@ -496,9 +496,6 @@
     "final": "proxy",
     "rules": [
       {
-        "inbound": [
-          "mixed-in"
-        ],
         "action": "sniff"
       },
       {
