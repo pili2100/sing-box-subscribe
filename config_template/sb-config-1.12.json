@@ -532,10 +532,6 @@
     "final": "proxy",
     "rules": [
       {
-        "inbound": [
-          "tun",
-          "mixed-in"
-        ],
         "action": "sniff"
       },
       {
