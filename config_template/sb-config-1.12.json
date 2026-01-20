@@ -134,7 +134,8 @@
         "以太网 3"
       ],
       "endpoint_independent_nat": false,
-      "stack": "system",
+			"loopback_address": "10.7.0.1",
+      "stack": "mixed",
       "platform": {
         "http_proxy": {
           "enabled": true,
