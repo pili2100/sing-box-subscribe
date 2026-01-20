@@ -132,7 +132,7 @@
 			"strict_route": true,
 			"endpoint_independent_nat": false,
 			"loopback_address": "10.7.0.1",
-			"stack": "system",
+			"stack": "mixed",
 			"platform": {
 				"http_proxy": {
 					"enabled": true,
