@@ -608,7 +608,8 @@
         "rules": [
           {
             "inbound": [
-              "tun"
+              "tun",
+							"mixed-in"
             ]
           },
           {
