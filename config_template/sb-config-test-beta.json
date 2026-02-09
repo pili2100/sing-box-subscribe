@@ -614,8 +614,7 @@
 							},
 							{
 								"rule_set": [
-									"geosite-cn",
-									"geosite-geolocation-!cn"
+									"geosite-cn"
 								],
 								"invert": true
 							}
