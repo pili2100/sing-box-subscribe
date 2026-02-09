@@ -573,36 +573,6 @@
 			},
 			{
 				"type": "logical",
-				"mode": "and",
-				"rules": [
-					{
-						"inbound": [
-							"loop-in"
-						]
-					},
-					{
-						"rule_set": [
-							"geoip-cn",
-							"geosite-cn",
-							"geosite-geolocation-cn"
-						],
-						"invert": true
-					}
-				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"client_subnet": "104.174.125.138/32",
-				"strategy": "ipv4_only"
-			},
-			{
-				"rule_set": [
-					"geoip-cn",
-					"geosite-cn"
-				],
-				"outbound": "China"
-			},
-			{
-				"type": "logical",
 				"mode": "or",
 				"rules": [
 					{
@@ -651,7 +621,37 @@
 					}
 				],
 				"outbound": "loop"
+			},			
+			{
+				"rule_set": [
+					"geoip-cn",
+					"geosite-cn"
+				],
+				"outbound": "China"
 			},
+			{
+				"type": "logical",
+				"mode": "and",
+				"rules": [
+					{
+						"inbound": [
+							"loop-in"
+						]
+					},
+					{
+						"rule_set": [
+							"geoip-cn",
+							"geosite-cn",
+							"geosite-geolocation-cn"
+						],
+						"invert": true
+					}
+				],
+				"action": "resolve",
+				"server": "proxyDns",
+				"client_subnet": "104.174.125.138/32",
+				"strategy": "ipv4_only"
+			},			
 			{
 				"domain": [
 					"clash.razord.top",
