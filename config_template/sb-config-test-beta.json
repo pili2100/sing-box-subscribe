@@ -155,7 +155,7 @@
 			"type": "socks",
 			"listen": "127.0.0.1",
 			"listen_port": 7891,
-			"reuse_addr": true,
+			"reuse_addr": true,			
 			"tcp_fast_open": true,
 			"udp_fragment": true
 		}
@@ -507,7 +507,7 @@
 			"type": "socks",
 			"server": "127.0.0.1",
 			"server_port": 7891,
-			"version": "5",
+			"version": "5",			
 			"udp_fragment": true,
 			"udp_over_tcp": {
 				"enabled": true,
@@ -581,13 +581,12 @@
 						"rules": [
 							{
 								"inbound": [
-									"tun",
-									"mixed-in"
+									"loop-in"
 								]
 							},
 							{
 								"rule_set": [
-									"geosite-geolocation-!cn"
+							"geosite-geolocation-!cn"
 								],
 								"invert": true
 							}
@@ -595,8 +594,7 @@
 					},
 					{
 						"inbound": [
-							"tun",
-							"mixed-in"
+							"loop-in"
 						],
 						"rule_set": [
 							"geosite-youtube",
@@ -620,7 +618,10 @@
 						]
 					}
 				],
-				"outbound": "loop"
+				"action": "resolve",
+				"server": "proxyDns",
+				"client_subnet": "104.174.125.138/32",
+				"strategy": "ipv4_only"
 			},			
 			{
 				"rule_set": [
@@ -635,7 +636,8 @@
 				"rules": [
 					{
 						"inbound": [
-							"loop-in"
+							"tun",
+							"mixed-in"
 						]
 					},
 					{
@@ -647,11 +649,8 @@
 						"invert": true
 					}
 				],
-				"action": "resolve",
-				"server": "proxyDns",
-				"client_subnet": "104.174.125.138/32",
-				"strategy": "ipv4_only"
-			},			
+				"outbound": "loop"
+			},
 			{
 				"domain": [
 					"clash.razord.top",
