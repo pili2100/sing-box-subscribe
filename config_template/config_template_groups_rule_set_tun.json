@@ -77,6 +77,7 @@
           {
             "query_type": [
               "A",
+              "AAAA",
               "CNAME"
             ],
             "rule_set": [
@@ -86,6 +87,7 @@
           }
         ],
         "server": "localDns",
+        "strategy": "ipv4_only",
         "disable_cache": true
       },
       {
@@ -618,23 +620,15 @@
               "loop-in"
             ],
             "rule_set": [
-              "geosite-youtube",
-              "geosite-openai",
-              "geosite-google",
-              "geosite-github",
-              "geosite-telegram",
-              "geosite-twitter",
-              "geosite-facebook",
-              "geosite-bahamut",
-              "geosite-spotify",
-              "geosite-tiktok",
-              "geosite-netflix",
-              "geosite-disney",
-              "geosite-apple",
-              "geosite-amazon",
-              "geosite-microsoft",
-              "geosite-hbo",
-              "geosite-primevideo",
+              "geosite-geolocation-!cn"
+            ],
+            "invert": true
+          },          
+          {
+            "inbound": [
+              "loop-in"
+            ],
+            "rule_set": [
               "geosite-geolocation-!cn"
             ]
           }
