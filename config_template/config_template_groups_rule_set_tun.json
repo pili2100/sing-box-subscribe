@@ -569,45 +569,21 @@
             },
             {
                 "type": "logical",
-                "mode": "or",
+                "mode": "and",
                 "rules": [
                     {
-                        "type": "logical",
-                        "mode": "and",
-                        "rules": [
-                            {
-                                "inbound": [
-                                    "tun"
-                                ]
-                            },
-                            {
-                                "rule_set": [
-                                    "geoip-cn",
-                                    "geosite-cn",
-                                    "geosite-geolocation-cn"
-                                ],
-                                "invert": true
-                            }
+                        "inbound": [
+                            "tun",
+                            "mixed-in"
                         ]
                     },
                     {
-                        "type": "logical",
-                        "mode": "and",
-                        "rules": [
-                            {
-                                "inbound": [
-                                    "mixed-in"
-                                ]
-                            },
-                            {
-                                "rule_set": [
-                                    "geoip-cn",
-                                    "geosite-cn",
-                                    "geosite-geolocation-cn"
-                                ],
-                                "invert": true
-                            }
-                        ]
+                        "rule_set": [
+                            "geoip-cn",
+                            "geosite-cn",
+                            "geosite-geolocation-cn"
+                        ],
+                        "invert": true
                     }
                 ],
                 "outbound": "loop"
@@ -641,20 +617,36 @@
                         ]
                     },
                     {
-                        "inbound": [
-                            "loop-in"
-                        ],
-                        "rule_set": [
-                            "geosite-geolocation-!cn"
-                        ],
-                        "invert": true
+                        "type": "logical",
+                        "mode": "and",
+                        "rules": [
+                            {
+                                "inbound": [
+                                    "loop-in"
+                                ]
+                            },
+                            {
+                                "rule_set": [
+                                    "geosite-geolocation-!cn"
+                                ],
+                                "invert": true
+                            }
+                        ]
                     },
                     {
-                        "inbound": [
-                            "loop-in"
-                        ],
-                        "rule_set": [
-                            "geosite-geolocation-!cn"
+                        "type": "logical",
+                        "mode": "and",
+                        "rules": [
+                            {
+                                "inbound": [
+                                    "loop-in"
+                                ]
+                            },
+                            {
+                                "rule_set": [
+                                    "geosite-geolocation-!cn"
+                                ]
+                            }
                         ]
                     }
                 ],
