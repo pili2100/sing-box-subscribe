@@ -616,7 +616,23 @@
                             },
                             {
                                 "rule_set": [
-                                    "geosite-cn"
+                                    "geosite-youtube",
+                                    "geosite-openai",
+                                    "geosite-google",
+                                    "geosite-github",
+                                    "geosite-telegram",
+                                    "geosite-twitter",
+                                    "geosite-facebook",
+                                    "geosite-bahamut",
+                                    "geosite-spotify",
+                                    "geosite-tiktok",
+                                    "geosite-netflix",
+                                    "geosite-disney",
+                                    "geosite-apple",
+                                    "geosite-amazon",
+                                    "geosite-microsoft",
+                                    "geosite-hbo",
+                                    "geosite-primevideo"
                                 ],
                                 "invert": true
                             }
@@ -633,7 +649,7 @@
                             },
                             {
                                 "rule_set": [
-                                    "geosite-geolocation-!cn"
+                                    "geosite-cn"
                                 ],
                                 "invert": true
                             }
