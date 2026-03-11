@@ -27,7 +27,7 @@
                 "path": "/mq/dns.google/dns-query/mq/dns.adguard-dns.com/dns-query",
                 "domain_resolver": {
                     "server": "localDns",
-                    "strategy": "ipv4_only"
+                    "strategy": "prefer_ipv4"
                 },
                 "detour": "proxy"
             },
