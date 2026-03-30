@@ -24,7 +24,7 @@
                 "type": "https",
                 "tag": "proxyDns",
                 "server": "v.recipes",
-                "path": "/mq/dns.google/dns-query/mq/dns.adguard-dns.com/dns-query",
+                "path": "/mq/dns.adguard-dns.com/dns-query/mq/dns.google/dns-query",
                 "domain_resolver": {
                     "server": "localDns",
                     "strategy": "prefer_ipv4"
