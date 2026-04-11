@@ -521,7 +521,7 @@
     "route": {
         "default_domain_resolver": {
       "server": "localDns",
-	  "strategy": "ipv4_only",
+	  "strategy": "prefer_ipv4",
 	  "client_subnet": "1.2.8.10"
         },
         "auto_detect_interface": true,
