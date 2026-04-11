@@ -520,7 +520,9 @@
     ],
     "route": {
         "default_domain_resolver": {
-            "server": "localDns"
+      "server": "localDns",
+	  "strategy": "ipv4_only",
+	  "client_subnet": "1.2.8.10"
         },
         "auto_detect_interface": true,
         "final": "proxy",
