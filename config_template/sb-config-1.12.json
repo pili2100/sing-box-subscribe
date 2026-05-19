@@ -62,8 +62,7 @@
       },
       {
         "rule_set": [
-          "geosite-geolocation-cn",
-          "geosite-cn"
+          "geosite-geolocation-!cn"
         ],
         "invert": true,
         "action": "evaluate",
@@ -77,6 +76,7 @@
         "disable_cache": true
       },
       {
+        "match_response": true,
         "query_type": [
           "AAAA"
         ],
@@ -85,15 +85,14 @@
       },
       {
         "rule_set": [
-          "geosite-geolocation-cn",
-          "geosite-cn"
+          "geosite-geolocation-!cn"
         ],
         "invert": true,
         "action": "respond"
       }
     ],
     "final": "proxyDns",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "cache_capacity": 2048
   },
   "http_clients": [
@@ -111,11 +110,13 @@
       "tag": "tun-in",
       "mtu": 9000,
       "address": [
-        "172.18.0.1/30"
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
       ],
       "dns_mode": "hijack",
       "dns_address": [
-        "172.18.0.2"
+        "172.18.0.2",
+        "fdfe:dcba:9876::2"
       ],
       "auto_route": true,
       "strict_route": true,
@@ -482,64 +483,6 @@
         "mode": "or",
         "rules": [
           {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
-        "action": "hijack-dns"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": "geosite-category-ads-all",
-        "action": "reject"
-      },
-      {
-        "ip_cidr": "198.18.0.0/15",
-        "outbound": "proxy"
-      },
-      {
-        "clash_mode": "direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "global",
-        "outbound": "proxy"
-      },
-      {
-        "rule_set": "geosite-private",
-        "outbound": "direct"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "rule_set": [
-          "geoip-cn",
-          "geosite-cn"
-        ],
-        "outbound": "China"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
             "type": "logical",
             "mode": "and",
             "rules": [
@@ -576,7 +519,88 @@
         "server": "proxyDns",
         "strategy": "ipv4_only",
         "client_subnet": "104.174.125.138"
+      },	  
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
       },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "domain_keyword": "srdcloud"
+          },
+          {
+            "process_name": "Proxifier"
+          },
+          {
+            "ip_cidr": [
+              "132.0.0.0/8",
+              "192.168.0.0/16",
+              "10.0.0.0/8",
+              "127.0.0.0/8",
+              "172.16.0.0/12",
+              "100.64.0.0/10"
+            ]
+          }
+        ],
+        "outbound": "direct-out"
+      },		  
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+			"network": "udp",		  
+            "port": 443
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "action": "reject"
+      },
+      {
+        "ip_cidr": ["198.18.0.0/15","fc00::/18"],
+        "outbound": "proxy"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "proxy"
+      },
+      {
+        "rule_set": "geosite-private",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "China"
+      },  
       {
         "domain": [
           "clash.razord.top",
@@ -624,7 +648,7 @@
       },
       {
         "rule_set": "geoip-netflix",
-        "outbound": "Netflix"
+        "outbound": "NETFLIX"
       },
       {
         "rule_set": "geosite-disney",
@@ -652,7 +676,7 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Global"
-      }
+      }   
     ],
     "rule_set": [
       {
