@@ -31,10 +31,6 @@
     ],
     "rules": [
       {
-        "ip_version": 6,
-        "action": "reject"
-      },
-      {
         "rule_set": "geosite-category-ads-all",
         "action": "reject"
       },
@@ -65,32 +61,42 @@
         "disable_cache": true
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": [
+          "geosite-geolocation-!cn"
+        ],
         "invert": true,
         "action": "evaluate",
         "server": "proxyDns",
         "client_subnet": "104.174.125.138"
       },
       {
-        "rule_set": "geoip-cn",
         "match_response": true,
+        "rule_set": [
+          "geoip-cn"
+        ],
+        "action": "route",
         "server": "localDns",
         "disable_cache": true
       },
       {
-        "query_type": "AAAA",
         "match_response": true,
+        "query_type": [
+          "AAAA"
+        ],
+        "action": "route",
         "server": "dns_fakeip",
         "rewrite_ttl": 30
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": [
+          "geosite-geolocation-!cn"
+        ],
         "invert": true,
         "action": "respond"
       }
     ],
     "final": "proxyDns",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "cache_capacity": 2048
   },
   "http_clients": [
@@ -473,41 +479,6 @@
   "route": {
     "rules": [
       {
-        "inbound": "tun-in",
-        "action": "sniff"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
-        "action": "hijack-dns"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "network": "udp",
-            "port": [
-              443,
-              853,
-              5353
-            ]
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "action": "reject"
-      },
-      {
         "type": "logical",
         "mode": "and",
         "rules": [
@@ -544,6 +515,41 @@
         ],
         "action": "reject",
         "method": "default"
+      },	
+      {
+        "inbound": "tun-in",
+        "action": "sniff"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "network": "udp",
+            "port": [
+              443,
+              853,
+              5353
+            ]
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
       },
       {
         "rule_set": "geosite-category-ads-all",
