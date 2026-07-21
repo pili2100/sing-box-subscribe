@@ -486,16 +486,18 @@
             "ip_version": 6
           },
           {
+            "ip_cidr": "2000::/3"
+          },
+          {
             "default_interface_address": "2000::/3"
           },
           {
-            "default_interface_address": "fc00::/7",
-            "invert": true
+            "default_interface_address": "fc00::/7"
           }
         ],
         "action": "reject",
         "method": "default"
-      },
+      },	
       {
         "type": "logical",
         "mode": "and",
@@ -504,13 +506,11 @@
             "ip_version": 6
           },
           {
-            "ip_cidr": "2000::/3"
-          },
-          {
             "default_interface_address": "2000::/3"
           },
           {
-            "default_interface_address": "fc00::/7"
+            "default_interface_address": "fc00::/7",
+            "invert": true
           }
         ],
         "action": "reject",
