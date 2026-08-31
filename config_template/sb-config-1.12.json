@@ -20,7 +20,13 @@
       {
         "type": "h3",
         "tag": "localDns",
-        "server": "223.6.6.6"
+        "server": "223.6.6.6",
+        "server_port": 443,
+        "path": "/dns-query",
+        "tls": {
+          "enabled": true,
+          "server_name": "dns.alidns.com"
+        }
       },
       {
         "type": "fakeip",
@@ -32,7 +38,8 @@
     "rules": [
       {
         "rule_set": "geosite-category-ads-all",
-        "action": "reject"
+		"action": "predefined",
+		"rcode": "NXDOMAIN"
       },
       {
         "clash_mode": "direct",
@@ -468,7 +475,7 @@
         }
       ],
       "url": "http://cp.cloudflare.com/generate_204",
-      "interval": "10m",
+      "interval": "10m0s",
       "tolerance": 50
     },
     {
@@ -478,44 +485,26 @@
   ],
   "route": {
     "rules": [
+  {
+    "type": "logical",
+    "mode": "and",
+    "rules": [
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "ip_version": 6
-          },
-          {
-            "ip_cidr": "2000::/3"
-          },
-          {
-            "default_interface_address": "2000::/3"
-          },
-          {
-            "default_interface_address": "fc00::/7"
-          }
-        ],
-        "action": "reject",
-        "method": "default"
-      },	
+        "ip_version": 6
+      },
       {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "ip_version": 6
-          },
-          {
-            "default_interface_address": "2000::/3"
-          },
-          {
-            "default_interface_address": "fc00::/7",
-            "invert": true
-          }
+        "ip_cidr": "2000::/3"
+      },
+      {
+        "ip_cidr": [
+          "240e:1234:5678:9abc::/64"
         ],
-        "action": "reject",
-        "method": "default"
-      },	
+        "invert": true
+      }
+    ],
+    "action": "reject",
+    "method": "drop"
+  },
       {
         "inbound": "tun-in",
         "action": "sniff"
@@ -549,7 +538,8 @@
             "protocol": "stun"
           }
         ],
-        "action": "reject"
+        "action": "reject",
+        "method": "default"
       },
       {
         "rule_set": "geosite-category-ads-all",
