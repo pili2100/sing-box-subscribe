@@ -721,7 +721,7 @@
       {
         "type": "remote",
         "tag": "geoip-bilibili",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/bilibili.srs"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/bilibili.srs"
       },
       {
         "type": "remote",
@@ -756,7 +756,7 @@
       {
         "type": "remote",
         "tag": "geoip-apple",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/apple.srs"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs"
       },
       {
         "type": "remote",
